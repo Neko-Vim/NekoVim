@@ -57,7 +57,7 @@ require("lazy").setup(
                         dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
-                        dashboard.button("q", "  > Quit NVIM", ":qa<CR>")
+                        dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
                     -- Set footer
@@ -322,10 +322,15 @@ local wk = require("which-key")
 wk.register({
   g = {
     name = "Git",
-    c = { "<cmd>wq | !git commit -a<cr>", "Save and commit" },
+    c = { "<cmd>w | !git commit -a<cr>", "Save and commit" },
     C = { "<cmd>!git checkout<cr>", "Check out origin"},
     p = { "<cmd>!git push<cr>", "Push commits" },
     f = { "<cmd>!git pull<cr>", "Fetch from origin" },
   },
-  f = { "<cmd>Fern . -drawer<cr>", "Open file explorer"},
+  a = {
+    name = "Apps",
+    f = { "<cmd>Fern . -drawer<cr>", "Open file explorer" },
+    l = { "<cmd>Lazy<cr>", "Lazy.nvim" },
+    a = { "<cmd>Alpha<cr>", "Start screen"},
+  },
 }, { prefix = "<leader>" })
