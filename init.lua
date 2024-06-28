@@ -332,5 +332,6 @@ wk.register({
     f = { "<cmd>Fern . -drawer<cr>", "Open file explorer" },
     l = { "<cmd>Lazy<cr>", "Lazy.nvim" },
     a = { "<cmd>Alpha<cr>", "Start screen"},
+    m = { "<cmdMason<cr>", "Mason.nvim"},
   },
 }, { prefix = "<leader>" })
