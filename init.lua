@@ -90,7 +90,8 @@ require("lazy").setup(
                 dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
             },
             {
-                "lambdalisue/vim-fern"
+                "lambdalisue/vim-fern",
+		dependencies = {"lambdalisue/vim-fern-hijack"}
             },
             {
                 "williamboman/mason.nvim"
@@ -335,3 +336,7 @@ wk.register({
     m = { "<cmdMason<cr>", "Mason.nvim"},
   },
 }, { prefix = "<leader>" })
+vim.cmd[[
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+]]

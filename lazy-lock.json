@@ -25,5 +25,6 @@
   "telescope-file-browser.nvim": { "branch": "master", "commit": "a7ab9a957b17199183388c6f357d614fcaa508e5" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "vim-fern": { "branch": "main", "commit": "a675dff495a0a0fd15663ebbae585c19825a64c5" },
+  "vim-fern-hijack": { "branch": "master", "commit": "f65524899231b15528066744e714fb344abf0892" },
   "which-key.nvim": { "branch": "main", "commit": "0099511294f16b81c696004fa6a403b0ae61f7a0" }
 }
