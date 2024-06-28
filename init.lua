@@ -100,7 +100,6 @@ require("lazy").setup(
                 "nvim-lualine/lualine.nvim",
                 dependencies = {"nvim-tree/nvim-web-devicons"}
             },
-            -- lazy.nvim
             {
                 "folke/noice.nvim",
                 event = "VeryLazy",
@@ -223,7 +222,7 @@ require("lazy").setup(
                         }
                     }
                 }
-            }
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
