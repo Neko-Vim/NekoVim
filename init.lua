@@ -112,27 +112,117 @@ require("lazy").setup(
                 "nvim-treesitter/nvim-treesitter"
             },
             {
-                'VonHeikemen/lsp-zero.nvim',
-        	branch = 'v1.x',
-		dependencies = {
-            	    -- LSP Support
-            	    {'neovim/nvim-lspconfig'},             -- Required
-                    {'williamboman/mason.nvim'},           -- Optional
-            	    {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
+                "VonHeikemen/lsp-zero.nvim",
+                branch = "v1.x",
+                dependencies = {
+                    -- LSP Support
+                    {"neovim/nvim-lspconfig"}, -- Required
+                    {"williamboman/mason.nvim"}, -- Optional
+                    {"williamboman/mason-lspconfig.nvim"}, -- Optional
                     -- Autocompletion
-                    {'hrsh7th/nvim-cmp'},         -- Required
-            	    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-            	    {'hrsh7th/cmp-buffer'},       -- Optional
-            	    {'hrsh7th/cmp-path'},         -- Optional
-            	    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-            	    {'hrsh7th/cmp-nvim-lua'},     -- Optional
-
-            	    -- Snippets
-            	    {'L3MON4D3/LuaSnip'},             -- Required
-            	    {'rafamadriz/friendly-snippets'}, -- Optional
-        	}
+                    {"hrsh7th/nvim-cmp"}, -- Required
+                    {"hrsh7th/cmp-nvim-lsp"}, -- Required
+                    {"hrsh7th/cmp-buffer"}, -- Optional
+                    {"hrsh7th/cmp-path"}, -- Optional
+                    {"saadparwaiz1/cmp_luasnip"}, -- Optional
+                    {"hrsh7th/cmp-nvim-lua"}, -- Optional
+                    -- Snippets
+                    {"L3MON4D3/LuaSnip"}, -- Required
+                    {"rafamadriz/friendly-snippets"} -- Optional
+                }
             },
+            {
+                "folke/which-key.nvim",
+                event = "VeryLazy",
+                init = function()
+                    vim.o.timeout = true
+                    vim.o.timeoutlen = 300
+                end,
+                opts = {
+                    {
+                        plugins = {
+                            marks = true, -- shows a list of your marks on ' and `
+                            registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+                            -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+                            -- No actual key bindings are created
+                            spelling = {
+                                enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                                suggestions = 20 -- how many suggestions should be shown in the list?
+                            },
+                            presets = {
+                                operators = true, -- adds help for operators like d, y, ...
+                                motions = true, -- adds help for motions
+                                text_objects = true, -- help for text objects triggered after entering an operator
+                                windows = true, -- default bindings on <c-w>
+                                nav = true, -- misc bindings to work with windows
+                                z = true, -- bindings for folds, spelling and others prefixed with z
+                                g = true -- bindings for prefixed with g
+                            }
+                        },
+                        -- add operators that will trigger motion and text object completion
+                        -- to enable all native operators, set the preset / operators plugin above
+                        operators = {gc = "Comments"},
+                        key_labels = {},
+                        motions = {
+                            count = true
+                        },
+                        icons = {
+                            breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+                            separator = "➜", -- symbol used between a key and it's label
+                            group = "+" -- symbol prepended to a group
+                        },
+                        popup_mappings = {
+                            scroll_down = "<c-d>", -- binding to scroll down inside the popup
+                            scroll_up = "<c-u>" -- binding to scroll up inside the popup
+                        },
+                        window = {
+                            border = "none", -- none, single, double, shadow
+                            position = "bottom", -- bottom, top
+                            margin = {1, 0, 1, 0}, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+                            padding = {1, 2, 1, 2}, -- extra window padding [top, right, bottom, left]
+                            winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+                            zindex = 1000 -- positive value to position WhichKey above other floating windows.
+                        },
+                        layout = {
+                            height = {min = 4, max = 25}, -- min and max height of the columns
+                            width = {min = 20, max = 50}, -- min and max width of the columns
+                            spacing = 3, -- spacing between columns
+                            align = "left" -- align columns left, center or right
+                        },
+                        ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+                        hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua "}, -- hide mapping boilerplate
+                        show_help = true, -- show a help message in the command line for using WhichKey
+                        show_keys = true, -- show the currently pressed key and its label as a message in the command line
+                        triggers = "auto", -- automatically setup triggers
+                        -- triggers = {"<leader>"} -- or specify a list manually
+                        -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
+                        triggers_nowait = {
+                            -- marks
+                            "`",
+                            "'",
+                            "g`",
+                            "g'",
+                            -- registers
+                            '"',
+                            "<c-r>",
+                            -- spelling
+                            "z="
+                        },
+                        triggers_blacklist = {
+                            -- list of mode / prefixes that should never be hooked by WhichKey
+                            -- this is mostly relevant for keymaps that start with a native binding
+                            i = {"j", "k"},
+                            v = {"j", "k"}
+                        },
+                        -- disable the WhichKey popup for certain buf types and file types.
+                        -- Disabled by default for Telescope
+                        disable = {
+                            buftypes = {},
+                            filetypes = {}
+                        }
+                    }
+                }
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -166,7 +256,76 @@ require("noice").setup(
         }
     }
 )
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+local lsp = require("lsp-zero")
+lsp.preset("recommended")
 lsp.nvim_workspace()
 lsp.setup()
+require "nordic".setup {
+    -- This callback can be used to override the colors used in the palette.
+    on_palette = function(palette)
+        return palette
+    end,
+    -- Enable bold keywords.
+    bold_keywords = false,
+    -- Enable italic comments.
+    italic_comments = true,
+    -- Enable general editor background transparency.
+    transparent_bg = false,
+    -- Enable brighter float border.
+    bright_border = false,
+    -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+    reduced_blue = true,
+    -- Swap the dark background with the normal one.
+    swap_backgrounds = false,
+    -- Override the styling of any highlight group.
+    override = {},
+    -- Cursorline options.  Also includes visual/selection.
+    cursorline = {
+        -- Bold font in cursorline.
+        bold = false,
+        -- Bold cursorline number.
+        bold_number = true,
+        -- Available styles: 'dark', 'light'.
+        theme = "dark",
+        -- Blending the cursorline bg with the buffer bg.
+        blend = 0.85
+    },
+    noice = {
+        -- Available styles: `classic`, `flat`.
+        style = "classic"
+    },
+    telescope = {
+        -- Available styles: `classic`, `flat`.
+        style = "flat"
+    },
+    leap = {
+        -- Dims the backdrop when using leap.
+        dim_backdrop = false
+    },
+    ts_context = {
+        -- Enables dark background for treesitter-context window
+        dark_background = true
+    }
+}
+vim.opt.termguicolors = true
+require("bufferline").setup{
+    options = {
+    	separator_style = "slant",
+	hover = {
+	    enabled = true,
+	    delay = 200,
+            reveal = {'close'},
+	},
+    }
+}
+local wk = require("which-key")
+wk.register({
+  g = {
+    name = "Git",
+    c = { "<cmd>wq | !git commit -a<cr>", "Save and commit" },
+    C = { "<cmd>!git checkout<cr>", "Check out origin"},
+    p = { "<cmd>!git push<cr>", "Push commits" },
+    f = { "<cmd>!git pull<cr>", "Fetch from origin" },
+  },
+  f = { "<cmd>Fern . -drawer<cr>", "Open file explorer"},
+}, { prefix = "<leader>" })
