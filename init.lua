@@ -17,6 +17,43 @@ require("lazy").setup(
     {
         spec = {
             {
+                "folke/trouble.nvim",
+                opts = {}, -- for default options, refer to the configuration section for custom setup.
+                cmd = "Trouble",
+                keys = {
+                    {
+                        "<leader>xx",
+                        "<cmd>Trouble diagnostics toggle<cr>",
+                        desc = "Diagnostics (Trouble)"
+                    },
+                    {
+                        "<leader>xX",
+                        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                        desc = "Buffer Diagnostics (Trouble)"
+                    },
+                    {
+                        "<leader>cs",
+                        "<cmd>Trouble symbols toggle focus=false<cr>",
+                        desc = "Symbols (Trouble)"
+                    },
+                    {
+                        "<leader>cl",
+                        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                        desc = "LSP Definitions / references / ... (Trouble)"
+                    },
+                    {
+                        "<leader>xL",
+                        "<cmd>Trouble loclist toggle<cr>",
+                        desc = "Location List (Trouble)"
+                    },
+                    {
+                        "<leader>xQ",
+                        "<cmd>Trouble qflist toggle<cr>",
+                        desc = "Quickfix List (Trouble)"
+                    }
+                }
+            },
+            {
                 "AlexvZyl/nordic.nvim",
                 lazy = false,
                 priority = 1000,
@@ -91,7 +128,7 @@ require("lazy").setup(
             },
             {
                 "lambdalisue/vim-fern",
-		dependencies = {"lambdalisue/vim-fern-hijack"}
+                dependencies = {"lambdalisue/vim-fern-hijack"}
             },
             {
                 "williamboman/mason.nvim"
@@ -223,10 +260,10 @@ require("lazy").setup(
                     }
                 }
             },
-	    {
-		'echasnovski/mini.nvim',
-		version = '*'
-	    },
+            {
+                "echasnovski/mini.nvim",
+                version = "*"
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -312,34 +349,43 @@ require "nordic".setup {
     }
 }
 vim.opt.termguicolors = true
-require("bufferline").setup{
+require("bufferline").setup {
     options = {
-    	separator_style = "slant",
-	hover = {
-	    enabled = true,
-	    delay = 200,
-            reveal = {'close'},
-	},
+        separator_style = "slant",
+        hover = {
+            enabled = true,
+            delay = 200,
+            reveal = {"close"}
+        }
     }
 }
 local wk = require("which-key")
-wk.register({
-  g = {
-    name = "Git",
-    c = { "<cmd>w | !git commit -a<cr>", "Save and commit" },
-    C = { "<cmd>!git checkout<cr>", "Check out origin"},
-    p = { "<cmd>!git push<cr>", "Push commits" },
-    f = { "<cmd>!git pull<cr>", "Fetch from origin" },
-  },
-  a = {
-    name = "Apps",
-    f = { "<cmd>Fern . -drawer<cr>", "Open file explorer" },
-    l = { "<cmd>Lazy<cr>", "Lazy.nvim" },
-    a = { "<cmd>Alpha<cr>", "Start screen"},
-    m = { "<cmd>Mason<cr>", "Mason.nvim"},
-  },
-}, { prefix = "<leader>" })
-vim.cmd[[
+wk.register(
+    {
+        g = {
+            name = "Git",
+            c = {"<cmd>w | !git commit -a<cr>", "Save and commit"},
+            C = {"<cmd>!git checkout<cr>", "Check out origin"},
+            p = {"<cmd>!git push<cr>", "Push commits"},
+            f = {"<cmd>!git pull<cr>", "Fetch from origin"}
+        },
+        a = {
+            name = "Apps",
+            f = {"<cmd>Fern . -drawer<cr>", "Open file explorer"},
+            l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
+            s = {"<cmd>Alpha<cr>", "Start screen"},
+            m = {"<cmd>Mason<cr>", "Mason.nvim"}
+        },
+        w = {
+            Name = "Save",
+            w = {"<cmd>w<cr>", "Save"},
+            q = {"<cmd>wq<cr>", "Save and quit"}
+        },
+        t = {"<cmd>term<cr>", "Terminal"}
+    },
+    {prefix = "<leader>"}
+)
+vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 ]]
