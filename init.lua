@@ -363,7 +363,7 @@ wk.register(
     {
         g = {
             name = "Git",
-            c = {"<cmd>term<cr>git commit -a<cr>", "Commit"},
+            c = {"<cmd>Git commit -a<cr>", "Commit"},
             C = {"<cmd>!git checkout<cr>", "Check out origin"},
             p = {"<cmd>!git push<cr>", "Push commits"},
             f = {"<cmd>!git pull<cr>", "Fetch from origin"}
