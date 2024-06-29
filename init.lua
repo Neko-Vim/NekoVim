@@ -260,11 +260,7 @@ require("lazy").setup(
                     }
                 }
             },
-            {
-                "echasnovski/mini.nvim",
-                version = "*"
-            }
-        },
+	},
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
         install = {colorscheme = {"nordic"}},
@@ -364,7 +360,7 @@ wk.register(
     {
         g = {
             name = "Git",
-            c = {"<cmd>w | !git commit -a<cr>", "Save and commit"},
+            c = {"<cmd>w<cr><cmd>!git commit -a<cr>", "Save and commit"},
             C = {"<cmd>!git checkout<cr>", "Check out origin"},
             p = {"<cmd>!git push<cr>", "Push commits"},
             f = {"<cmd>!git pull<cr>", "Fetch from origin"}
@@ -381,7 +377,8 @@ wk.register(
             w = {"<cmd>w<cr>", "Save"},
             q = {"<cmd>wq<cr>", "Save and quit"}
         },
-        t = {"<cmd>term<cr>", "Terminal"}
+        t = {"<cmd>term<cr>", "Terminal"},
+	x = {Name = "Trouble"}
     },
     {prefix = "<leader>"}
 )
