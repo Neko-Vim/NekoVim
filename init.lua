@@ -223,6 +223,10 @@ require("lazy").setup(
                     }
                 }
             },
+	    {
+		'echasnovski/mini.nvim',
+		version = '*'
+	    },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -332,7 +336,7 @@ wk.register({
     f = { "<cmd>Fern . -drawer<cr>", "Open file explorer" },
     l = { "<cmd>Lazy<cr>", "Lazy.nvim" },
     a = { "<cmd>Alpha<cr>", "Start screen"},
-    m = { "<cmdMason<cr>", "Mason.nvim"},
+    m = { "<cmd>Mason<cr>", "Mason.nvim"},
   },
 }, { prefix = "<leader>" })
 vim.cmd[[
