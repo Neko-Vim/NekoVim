@@ -260,10 +260,14 @@ require("lazy").setup(
                     }
                 }
             },
+            {
+                "echasnovski/mini.nvim",
+                version = "*"
+            },
 	    {
 		"tpope/vim-fugitive"
-	    },
-	},
+	    }
+        },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
         install = {colorscheme = {"nordic"}},
@@ -363,7 +367,7 @@ wk.register(
     {
         g = {
             name = "Git",
-            c = {"<cmd>Git commit -a<cr>", "Commit"},
+            c = {"<cmd>w | !git commit -a<cr>", "Save and commit"},
             C = {"<cmd>!git checkout<cr>", "Check out origin"},
             p = {"<cmd>!git push<cr>", "Push commits"},
             f = {"<cmd>!git pull<cr>", "Fetch from origin"}
@@ -376,12 +380,14 @@ wk.register(
             m = {"<cmd>Mason<cr>", "Mason.nvim"}
         },
         w = {
-            Name = "Save",
+            name = "Save",
             w = {"<cmd>w<cr>", "Save"},
             q = {"<cmd>wq<cr>", "Save and quit"}
         },
         t = {"<cmd>term<cr>", "Terminal"},
-	x = {Name = "Trouble"}
+	r = {"<cmd>!browser-sync start -f -s<cr>", "Run JS in browser"},
+	x = {name = "Trouble"},
+	c = {name = "Trouble misc."}
     },
     {prefix = "<leader>"}
 )
