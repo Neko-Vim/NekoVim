@@ -1,6 +1,7 @@
 # my nvim config!!!!!!!!!!!!
 ## Installation
 either clone my shit in %localappdata%\nvim or ~/.config/nvim depending on the software
+or just run the batch in releases
 ## Features
 * mason.nvim
 * lazy.nvim
