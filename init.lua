@@ -260,6 +260,9 @@ require("lazy").setup(
                     }
                 }
             },
+	    {
+		"tpope/vim-fugitive"
+	    },
 	},
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -360,7 +363,7 @@ wk.register(
     {
         g = {
             name = "Git",
-            c = {"<cmd>w<cr><cmd>!git commit -a<cr>", "Save and commit"},
+            c = {"<cmd>term<cr>git commit -a<cr>", "Commit"},
             C = {"<cmd>!git checkout<cr>", "Check out origin"},
             p = {"<cmd>!git push<cr>", "Push commits"},
             f = {"<cmd>!git pull<cr>", "Fetch from origin"}
