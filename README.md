@@ -16,3 +16,5 @@ or just run the batch in releases
 * fuzzy finder
 * warmer version of nord theme
 * which-key.nvim
+## Screenshots
+![image](https://github.com/tungstengmd/nvim-config/assets/118553985/2df53dc9-2159-46d0-a636-bdcea3dbbb22)
