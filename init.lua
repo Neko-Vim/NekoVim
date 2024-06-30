@@ -266,6 +266,9 @@ require("lazy").setup(
             },
 	    {
 		"tpope/vim-fugitive"
+	    },
+	    {
+		"lewis6991/gitsigns.nvim"
 	    }
         },
         -- Configure any other settings here. See the documentation for more details.
@@ -395,3 +398,4 @@ vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 ]]
+require('gitsigns').setup()
