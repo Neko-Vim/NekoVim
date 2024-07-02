@@ -371,10 +371,10 @@ wk.register(
     {
         g = {
             name = "Git",
-            c = {"<cmd>w | !git commit -a<cr>", "Save and commit"},
-            C = {"<cmd>!git checkout<cr>", "Check out origin"},
-            p = {"<cmd>!git push<cr>", "Push commits"},
-            f = {"<cmd>!git pull<cr>", "Fetch from origin"}
+            c = {"<cmd>w | Git commit -a<cr>", "Save and commit"},
+            C = {"<cmd>Git checkout<cr>", "Check out origin"},
+            p = {"<cmd>Git push<cr>", "Push commits"},
+            f = {"<cmd>Git pull<cr>", "Fetch from origin"}
         },
         a = {
             name = "Apps",
@@ -398,6 +398,7 @@ wk.register(
 vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+    autocmd VimEnter * Alpha
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
