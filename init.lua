@@ -404,6 +404,6 @@ vim.cmd [[
     set shiftwidth=4
     set expandtab
     set list
-    set lcs=tab:\|\  
+    set lcs=tab:\|\-
 ]]
 require('gitsigns').setup()
