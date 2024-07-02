@@ -378,7 +378,7 @@ wk.register(
         },
         a = {
             name = "Apps",
-            f = {"<cmd>Fern . -drawer<cr>", "Open file explorer"},
+            f = {"<cmd>Fern -drawer %.h<cr>", "Open file explorer"},
             l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
             s = {"<cmd>Alpha<cr>", "Start screen"},
             m = {"<cmd>Mason<cr>", "Mason.nvim"}
