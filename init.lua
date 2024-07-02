@@ -62,11 +62,6 @@ require("lazy").setup(
                 end
             },
             {
-                "akinsho/bufferline.nvim",
-                version = "*",
-                dependencies = "nvim-tree/nvim-web-devicons"
-            },
-            {
                 "nvim-telescope/telescope.nvim",
                 tag = "0.1.8",
                 dependencies = {"nvim-lua/plenary.nvim"}
@@ -269,7 +264,13 @@ require("lazy").setup(
 	    },
 	    {
 		"lewis6991/gitsigns.nvim"
-	    }
+	    },
+	    {
+		"romgrk/barbar.nvim"
+	    },
+	    {
+		"neoclide/coc.nvim"
+	    },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -397,5 +398,9 @@ wk.register(
 vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+    filetype plugin indent on
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
 ]]
 require('gitsigns').setup()
