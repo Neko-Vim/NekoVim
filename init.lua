@@ -1,3 +1,5 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -13,9 +15,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
-require("lazy").setup(
-    {
-        spec = {
+require("lazy").setup({
+    spec = {
+            {
+                -- amongst your other plugins
+                {"akinsho/toggleterm.nvim", version = "*", config = true}
+            },
             {
                 "folke/trouble.nvim",
                 opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -84,7 +89,7 @@ require("lazy").setup(
                     -- Set menu
                     dashboard.section.buttons.val = {
                         dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-                        dashboard.button("f", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
+                        dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
                         dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
                         dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
@@ -113,17 +118,13 @@ require("lazy").setup(
 
                     -- Disable folding on alpha buffer
                     vim.cmd([[
-    			autocmd FileType alpha setlocal nofoldenable
-		        ]])
+    			    autocmd FileType alpha setlocal nofoldenable
+		            ]])
                 end
             },
             {
                 "nvim-telescope/telescope-file-browser.nvim",
                 dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
-            },
-            {
-                "lambdalisue/vim-fern",
-                dependencies = {"lambdalisue/vim-fern-hijack"}
             },
             {
                 "williamboman/mason.nvim"
@@ -259,18 +260,21 @@ require("lazy").setup(
                 "echasnovski/mini.nvim",
                 version = "*"
             },
-	    {
-		"tpope/vim-fugitive"
-        },
-	    {
-		"lewis6991/gitsigns.nvim"
-	    },
-	    {
-		"romgrk/barbar.nvim"
-	    },
-	    {
-		"neoclide/coc.nvim"
-	    },
+            {
+                "tpope/vim-fugitive"
+            },
+            {
+                "lewis6991/gitsigns.nvim"
+            },
+            {
+                "romgrk/barbar.nvim"
+            },
+            {
+                "neoclide/coc.nvim"
+            },
+            {
+                "nvim-tree/nvim-tree.lua"
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -378,7 +382,7 @@ wk.register(
         },
         a = {
             name = "Apps",
-            f = {"<cmd>Fern -drawer %.h<cr>", "Open file explorer"},
+            f = {"<cmd>NvimTreeOpen<cr>", "Open file explorer"},
             l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
             s = {"<cmd>Alpha<cr>", "Start screen"},
             m = {"<cmd>Mason<cr>", "Mason.nvim"}
@@ -389,15 +393,14 @@ wk.register(
             q = {"<cmd>wq<cr>", "Save and quit"}
         },
         t = {"<cmd>term<cr>", "Terminal"},
-	r = {"<cmd>!browser-sync start -f -s<cr>", "Run JS in browser"},
-	x = {name = "Trouble"},
-	c = {name = "Trouble misc."}
+        r = {"<cmd>term<cr>browser-sync start -f -s<cr>", "Run JS in browser"},
+        x = {name = "Trouble"},
+        c = {name = "Trouble misc."}
     },
     {prefix = "<leader>"}
 )
 vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
@@ -405,4 +408,12 @@ vim.cmd [[
     set list
     set lcs=tab:\|\-
 ]]
-require('gitsigns').setup()
+require("gitsigns").setup()
+if vim.g.neovide then
+    vim.o.guifont = "Cascadia Code NF"
+end
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()
