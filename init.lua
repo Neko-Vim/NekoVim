@@ -401,6 +401,7 @@ wk.register(
 )
 vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * NvimTreeOpen
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
