@@ -114,7 +114,7 @@ require("lazy").setup(
                     -- Disable folding on alpha buffer
                     vim.cmd([[
     			autocmd FileType alpha setlocal nofoldenable
-		    ]])
+		        ]])
                 end
             },
             {
@@ -261,7 +261,7 @@ require("lazy").setup(
             },
 	    {
 		"tpope/vim-fugitive"
-	    },
+        },
 	    {
 		"lewis6991/gitsigns.nvim"
 	    },
@@ -398,7 +398,6 @@ wk.register(
 vim.cmd [[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * ++nested Fern -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-    autocmd VimEnter * Alpha
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
