@@ -275,6 +275,9 @@ require("lazy").setup({
             {
                 "nvim-tree/nvim-tree.lua"
             },
+            { 
+                "dracula/vim"
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -286,7 +289,7 @@ require("lazy").setup({
 vim.cmd([[set nu]])
 require("mason").setup()
 require("lualine").setup {
-    options = {theme = "nord"}
+    options = {theme = "nordic"}
 }
 require("noice").setup(
     {
@@ -318,7 +321,7 @@ require "nordic".setup {
         return palette
     end,
     -- Enable bold keywords.
-    bold_keywords = false,
+    bold_keywords = true,
     -- Enable italic comments.
     italic_comments = true,
     -- Enable general editor background transparency.
@@ -334,7 +337,7 @@ require "nordic".setup {
     -- Cursorline options.  Also includes visual/selection.
     cursorline = {
         -- Bold font in cursorline.
-        bold = false,
+        bold = true,
         -- Bold cursorline number.
         bold_number = true,
         -- Available styles: 'dark', 'light'.
