@@ -17,3 +17,4 @@ either clone my shit in %localappdata%\nvim or ~/.config/nvim depending on the s
 * which-key.nvim
 ## Screenshots
 ![image](https://github.com/tungstengmd/nvim-config/assets/118553985/1a5488e4-5a7b-4d2f-80a7-ac84d833d880)
+![image](https://github.com/tungstengmd/nvim-config/assets/118553985/a523b7a4-cb79-4072-99ed-614785bf52a3)
