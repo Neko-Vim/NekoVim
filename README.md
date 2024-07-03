@@ -16,4 +16,4 @@ either clone my shit in %localappdata%\nvim or ~/.config/nvim depending on the s
 * warmer version of nord theme
 * which-key.nvim
 ## Screenshots
-![image](https://github.com/tungstengmd/nvim-config/assets/118553985/2df53dc9-2159-46d0-a636-bdcea3dbbb22)
+![image](https://github.com/tungstengmd/nvim-config/assets/118553985/1a5488e4-5a7b-4d2f-80a7-ac84d833d880)
