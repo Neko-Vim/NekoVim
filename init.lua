@@ -292,7 +292,6 @@ require("lazy").setup({
 )
 vim.cmd([[set nu]])
 require("mason").setup()
-require("battery").setup()
 require("lualine").setup()
 require("noice").setup(
     {
