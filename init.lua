@@ -282,6 +282,10 @@ require("lazy").setup({
             {
                 "sunjon/stylish.nvim"
             },
+            { 
+                'IogaMaster/neocord',
+                event = "VeryLazy"
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
