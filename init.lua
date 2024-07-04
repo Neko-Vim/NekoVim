@@ -15,8 +15,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
-require("lazy").setup({
-    spec = {
+require("lazy").setup(
+    {
+        spec = {
             {
                 -- amongst your other plugins
                 {"akinsho/toggleterm.nvim", version = "*", config = true}
@@ -129,10 +130,6 @@ require("lazy").setup({
             },
             {
                 "williamboman/mason.nvim"
-            },
-            {
-                "nvim-lualine/lualine.nvim",
-                dependencies = {"nvim-tree/nvim-web-devicons"}
             },
             {
                 "folke/noice.nvim",
@@ -276,11 +273,17 @@ require("lazy").setup({
             {
                 "nvim-tree/nvim-tree.lua"
             },
-            { 
+            {
                 "dracula/vim"
             },
             {
                 "sunjon/stylish.nvim"
+            },
+            {
+		        "nvim-tree/nvim-web-devicons"
+	        },
+            {
+                "tamton-aquib/staline.nvim"
             },
         },
         -- Configure any other settings here. See the documentation for more details.
@@ -292,7 +295,6 @@ require("lazy").setup({
 )
 vim.cmd([[set nu]])
 require("mason").setup()
-require("lualine").setup()
 require("noice").setup(
     {
         lsp = {
@@ -414,9 +416,5 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
-vim.api.nvim_set_keymap(
-  'n',
-  '<Tab>',
-  '<Cmd>lua require"stylish".ui_clock()<CR>',
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
+require('staline').setup()
