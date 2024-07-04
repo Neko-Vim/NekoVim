@@ -278,6 +278,9 @@ require("lazy").setup({
             { 
                 "dracula/vim"
             },
+            {
+                "sunjon/stylish.nvim"
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -421,3 +424,10 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<Tab>',
+  '<Cmd>lua require"stylish".ui_clock()<CR>',
+  { noremap = true, silent = true }
+)
