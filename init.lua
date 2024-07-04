@@ -282,9 +282,6 @@ require("lazy").setup({
             {
                 "sunjon/stylish.nvim"
             },
-	    {
-		"justinhj/battery.nvim"
-	    },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -295,9 +292,8 @@ require("lazy").setup({
 )
 vim.cmd([[set nu]])
 require("mason").setup()
-require("lualine").setup {
-    options = {theme = "nordic"}
-}
+require("battery").setup()
+require("lualine").setup()
 require("noice").setup(
     {
         lsp = {
@@ -370,16 +366,6 @@ require "nordic".setup {
     }
 }
 vim.opt.termguicolors = true
-require("bufferline").setup {
-    options = {
-        separator_style = "slant",
-        hover = {
-            enabled = true,
-            delay = 200,
-            reveal = {"close"}
-        }
-    }
-}
 local wk = require("which-key")
 wk.register(
     {
@@ -435,11 +421,3 @@ vim.api.nvim_set_keymap(
   '<Cmd>lua require"stylish".ui_clock()<CR>',
   { noremap = true, silent = true }
 )
-require"battery".setup({})
-local nvimbattery = {
-  function()
-    return require("battery").get_status_line()
-  end,
-  color = { fg = colors.violet, bg = colors.bg },
-}
-sections = { lualine_a = nvimbattery }
