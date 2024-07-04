@@ -283,7 +283,7 @@ require("lazy").setup({
                 "sunjon/stylish.nvim"
             },
             { 
-                'IogaMaster/neocord',
+                'tungstengmd/neocord',
                 event = "VeryLazy"
             },
         },
@@ -424,3 +424,27 @@ vim.api.nvim_set_keymap(
   '<Cmd>lua require"stylish".ui_clock()<CR>',
   { noremap = true, silent = true }
 )
+-- The setup config table shows all available config options with their default values:
+require("neocord").setup({
+    -- General options
+    logo                = "https://github-production-user-asset-6210df.s3.amazonaws.com/118553985/345886922-3c74c4da-1f92-4232-9c5e-c6c967996eb3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240704%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240704T181812Z&X-Amz-Expires=300&X-Amz-Signature=ea82a5542a9d4da48b8bcb2cfbf1e30be3a81fdb6697ee1a4eef1512bfbaba2a&X-Amz-SignedHeaders=host&actor_id=118553985&key_id=0&repo_id=824207313",                     -- "auto" or url
+    logo_tooltip        = nil,                        -- nil or string
+    main_image          = "language",                 -- "language" or "logo"
+    client_id           = "1157438221865717891",      -- Use your own Discord application client id (not recommended)
+    log_level           = nil,                        -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
+    debounce_timeout    = 10,                         -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
+    blacklist           = {},                         -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
+    file_assets         = {},                         -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
+    show_time           = true,                       -- Show the timer
+    global_timer        = false,                      -- if set true, timer won't update when any event are triggered
+
+    -- Rich Presence text options
+    editing_text        = "Editing %s",               -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
+    file_explorer_text  = "Browsing %s",              -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
+    git_commit_text     = "Committing changes",       -- Format string rendered when committing changes in git (either string or function(filename: string): string)
+    plugin_manager_text = "Managing plugins",         -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
+    reading_text        = "Reading %s",               -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
+    workspace_text      = "Working on %s",            -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
+    line_number_text    = "Line %s out of %s",        -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
+    terminal_text       = "Using Terminal",           -- Format string rendered when in terminal mode.
+})
