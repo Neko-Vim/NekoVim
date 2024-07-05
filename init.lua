@@ -293,7 +293,8 @@ require("lazy").setup(
         checker = {enabled = true}
     }
 )
-vim.cmd([[set nu]])
+vim.cmd([[set nu
+            set autoread]])
 require("mason").setup()
 require("noice").setup(
     {
@@ -396,7 +397,7 @@ wk.register(
     },
     {prefix = "<leader>"}
 )
-vim.cmd [[
+vim.cmd([[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * NvimTreeOpen
     filetype plugin indent on
@@ -405,7 +406,7 @@ vim.cmd [[
     set expandtab
     set list
     set lcs=tab:\|\-
-]]
+]])
 require("gitsigns").setup()
 if vim.g.neovide then
     vim.o.guifont = "Cascadia Code NF"
