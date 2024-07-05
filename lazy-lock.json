@@ -32,5 +32,6 @@
   "trouble.nvim": { "branch": "main", "commit": "e32c194558ebeb433ccfd580a34c66770bc102bd" },
   "vim": { "branch": "master", "commit": "ada471d684d4acfe803c4e033d7c3ae5d7252db6" },
   "vim-fugitive": { "branch": "master", "commit": "5661dea7be3d176773ed217c424c0d0f5717bd31" },
+  "vimwiki": { "branch": "dev", "commit": "705ad1e0dded0e3b7ff5fac78547ab67c9d39bdf" },
   "which-key.nvim": { "branch": "main", "commit": "c13a5fb71b5b05d21c15b317d90269d7c7774892" }
 }

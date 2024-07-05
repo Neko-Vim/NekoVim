@@ -111,10 +111,11 @@ require("lazy").setup(
                         dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
                         dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
                         dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-                        dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+                        dashboard.button("s", "  > Settings", ":e $MYVIMRC<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
-                        dashboard.button("q", "  > Quit", ":qa<CR>")
+                        dashboard.button("q", "  > Quit", ":qa<CR>"),
+                        dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>")
                     }
 
                     -- Set footer
@@ -312,7 +313,10 @@ require("lazy").setup(
             {
                 "sainnhe/gruvbox-material",
                 name = "gruvbox"
-            }
+            },
+            {
+                "vimwiki/vimwiki"
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -432,6 +436,9 @@ vim.cmd(
     set lcs=tab:\|\-
     colorscheme rose-pine
     set nu
+    set nocompatible
+    filetype plugin on
+    syntax on
 ]]
 )
 require("gitsigns").setup()
