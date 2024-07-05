@@ -63,9 +63,6 @@ require("lazy").setup(
                 "AlexvZyl/nordic.nvim",
                 lazy = false,
                 priority = 1000,
-                config = function()
-                    require "nordic".load()
-                end
             },
             {
                 "nvim-telescope/telescope.nvim",
@@ -97,7 +94,6 @@ require("lazy").setup(
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
                         dashboard.button("q", "  > Quit", ":qa<CR>"),
-                        dashboard.button("t", "")
                     }
 
                     -- Set footer
@@ -281,13 +277,10 @@ require("lazy").setup(
                 "sunjon/stylish.nvim"
             },
             {
-		        "nvim-tree/nvim-web-devicons"
-	        },
-            {
-                "tamton-aquib/staline.nvim"
+                "nvim-tree/nvim-web-devicons"
             },
             {
-                "metakirby5/codi.vim"
+                "tamton-aquib/staline.nvim"
             },
             {
                 "alec-gibson/nvim-tetris"
@@ -296,6 +289,10 @@ require("lazy").setup(
                 "rose-pine/neovim",
                 name = "rose-pine"
             },
+	    {
+		"sainnhe/gruvbox-material",
+		name = "gruvbox"
+	    }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -304,8 +301,6 @@ require("lazy").setup(
         checker = {enabled = true}
     }
 )
-vim.cmd([[set nu
-            set autoread]])
 require("mason").setup()
 require("noice").setup(
     {
@@ -395,7 +390,7 @@ wk.register(
             l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
             s = {"<cmd>Alpha<cr>", "Start screen"},
             m = {"<cmd>Mason<cr>", "Mason.nvim"},
-            t = {"<cmd>Tetris<cr>", "Tetris"},
+            t = {"<cmd>Tetris<cr>", "Tetris"}
         },
         w = {
             name = "Save",
@@ -409,7 +404,8 @@ wk.register(
     },
     {prefix = "<leader>"}
 )
-vim.cmd([[
+vim.cmd(
+    [[
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * NvimTreeOpen
     filetype plugin indent on
@@ -418,7 +414,10 @@ vim.cmd([[
     set expandtab
     set list
     set lcs=tab:\|\-
-]])
+    colorscheme rose-pine
+    set nu
+]]
+)
 require("gitsigns").setup()
 if vim.g.neovide then
     vim.o.guifont = "Cascadia Code NF"
@@ -428,7 +427,7 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
-require('mini.map').setup()
+require("mini.map").setup()
 
 vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
-require('staline').setup()
+require("staline").setup()
