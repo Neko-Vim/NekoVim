@@ -96,7 +96,8 @@ require("lazy").setup(
                         dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
-                        dashboard.button("q", "  > Quit", ":qa<CR>")
+                        dashboard.button("q", "  > Quit", ":qa<CR>"),
+                        dashboard.button("t", "")
                     }
 
                     -- Set footer
@@ -285,6 +286,16 @@ require("lazy").setup(
             {
                 "tamton-aquib/staline.nvim"
             },
+            {
+                "metakirby5/codi.vim"
+            },
+            {
+                "alec-gibson/nvim-tetris"
+            },
+            {
+                "rose-pine/neovim",
+                name = "rose-pine"
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -383,7 +394,8 @@ wk.register(
             f = {"<cmd>NvimTreeOpen<cr>", "Open file explorer"},
             l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
             s = {"<cmd>Alpha<cr>", "Start screen"},
-            m = {"<cmd>Mason<cr>", "Mason.nvim"}
+            m = {"<cmd>Mason<cr>", "Mason.nvim"},
+            t = {"<cmd>Tetris<cr>", "Tetris"},
         },
         w = {
             name = "Save",
