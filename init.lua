@@ -289,14 +289,14 @@ require("lazy").setup(
                 "rose-pine/neovim",
                 name = "rose-pine"
             },
-	    {
-		"sainnhe/gruvbox-material",
-		name = "gruvbox"
-	    }
+	        {
+		        "sainnhe/gruvbox-material",
+		        name = "gruvbox"
+	        },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
-        install = {colorscheme = {"nordic"}},
+        install = {colorscheme = {"rose-pine"}},
         -- automatically check for plugin updates
         checker = {enabled = true}
     }

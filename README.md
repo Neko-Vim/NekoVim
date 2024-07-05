@@ -8,7 +8,7 @@ Clone this repository in either %localappdata%\nvim (Win32) or ~/.config/nvim (U
 * Lualine
 * Notifications and separate cmdline so you don't strain your neck by looking down
 * Start screen
-* All one file
+* All one file (don't tell me to make it more than one it WILL disintegrate)
 * File explorer
 * Code completion
 * Code *snippets*
