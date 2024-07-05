@@ -19,6 +19,27 @@ require("lazy").setup(
     {
         spec = {
             {
+                "nvim-orgmode/orgmode",
+                event = "VeryLazy",
+                ft = {"org"},
+                config = function()
+                    -- Setup orgmode
+                    require("orgmode").setup(
+                        {
+                            org_agenda_files = "~/orgfiles/**/*",
+                            org_default_notes_file = "~/orgfiles/refile.org"
+                        }
+                    )
+
+                    -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
+                    -- add ~org~ to ignore_install
+                    -- require('nvim-treesitter.configs').setup({
+                    --   ensure_installed = 'all',
+                    --   ignore_install = { 'org' },
+                    -- })
+                end
+            },
+            {
                 -- amongst your other plugins
                 {"akinsho/toggleterm.nvim", version = "*", config = true}
             },
@@ -62,7 +83,7 @@ require("lazy").setup(
             {
                 "AlexvZyl/nordic.nvim",
                 lazy = false,
-                priority = 1000,
+                priority = 1000
             },
             {
                 "nvim-telescope/telescope.nvim",
@@ -93,7 +114,7 @@ require("lazy").setup(
                         dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
-                        dashboard.button("q", "  > Quit", ":qa<CR>"),
+                        dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
                     -- Set footer
@@ -289,10 +310,10 @@ require("lazy").setup(
                 "rose-pine/neovim",
                 name = "rose-pine"
             },
-	        {
-		        "sainnhe/gruvbox-material",
-		        name = "gruvbox"
-	        },
+            {
+                "sainnhe/gruvbox-material",
+                name = "gruvbox"
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
