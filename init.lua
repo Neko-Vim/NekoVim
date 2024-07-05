@@ -312,10 +312,12 @@ require("lazy").setup(
             },
             {
                 "sainnhe/gruvbox-material",
-                name = "gruvbox"
             },
             {
                 "vimwiki/vimwiki"
+            },
+            {
+                'zaldih/themery.nvim'
             },
         },
         -- Configure any other settings here. See the documentation for more details.
@@ -410,7 +412,8 @@ wk.register(
             l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
             s = {"<cmd>Alpha<cr>", "Start screen"},
             m = {"<cmd>Mason<cr>", "Mason.nvim"},
-            t = {"<cmd>Tetris<cr>", "Tetris"}
+            t = {"<cmd>Tetris<cr>", "Tetris"},
+            T = {"<cmd>Themery<cr>", "Themery"},
         },
         w = {
             name = "Save",
@@ -453,4 +456,18 @@ require("nvim-tree").setup()
 require("mini.map").setup()
 
 vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
-require("staline").setup()
+require("staline").setup({
+    defaults = {
+        left_separator = "",
+        right_separator = ""
+    },
+    lsp_symbols = {
+        Error="",
+        Info="",
+    }
+})
+-- Minimal config
+require("themery").setup({
+  themes = {"gruvbox-material", "rose-pine", "nordic"}, -- Your list of installed colorschemes
+  livePreview = true, -- Apply theme while browsing. Default to true.
+})
