@@ -161,24 +161,23 @@ require("lazy").setup(
                 "nvim-treesitter/nvim-treesitter"
             },
             {
-                "VonHeikemen/lsp-zero.nvim",
-                branch = "v1.x",
-                dependencies = {
-                    -- LSP Support
-                    {"neovim/nvim-lspconfig"}, -- Required
-                    {"williamboman/mason.nvim"}, -- Optional
-                    {"williamboman/mason-lspconfig.nvim"}, -- Optional
-                    -- Autocompletion
-                    {"hrsh7th/nvim-cmp"}, -- Required
-                    {"hrsh7th/cmp-nvim-lsp"}, -- Required
-                    {"hrsh7th/cmp-buffer"}, -- Optional
-                    {"hrsh7th/cmp-path"}, -- Optional
-                    {"saadparwaiz1/cmp_luasnip"}, -- Optional
-                    {"hrsh7th/cmp-nvim-lua"}, -- Optional
-                    -- Snippets
-                    {"L3MON4D3/LuaSnip"}, -- Required
-                    {"rafamadriz/friendly-snippets"} -- Optional
-                }
+                'williamboman/mason-lspconfig.nvim'
+            },
+            {
+                'VonHeikemen/lsp-zero.nvim',
+                branch = 'v4.x'
+            },
+            {
+                'neovim/nvim-lspconfig'
+            },
+            {
+                'hrsh7th/cmp-nvim-lsp'
+            },
+            {
+                'hrsh7th/nvim-cmp'
+            },
+            {
+                'L3MON4D3/LuaSnip'
             },
             {
                 "folke/which-key.nvim",
@@ -343,10 +342,6 @@ require("noice").setup(
         }
     }
 )
-local lsp = require("lsp-zero")
-lsp.preset("recommended")
-lsp.nvim_workspace()
-lsp.setup()
 require "nordic".setup {
     -- This callback can be used to override the colors used in the palette.
     on_palette = function(palette)
