@@ -165,10 +165,6 @@ require("lazy").setup(
                 'williamboman/mason-lspconfig.nvim'
             },
             {
-                'VonHeikemen/lsp-zero.nvim',
-                branch = 'v4.x'
-            },
-            {
                 'neovim/nvim-lspconfig'
             },
             {
@@ -319,6 +315,10 @@ require("lazy").setup(
             {
                 'zaldih/themery.nvim'
             },
+            { 
+                'Neko-Vim/NekoVimRPC',
+                event = "VeryLazy"
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -423,7 +423,8 @@ wk.register(
         t = {"<cmd>term<cr>", "Terminal"},
         r = {"<cmd>term<cr>browser-sync start -f -s<cr>", "Run JS in browser"},
         x = {name = "Trouble"},
-        c = {name = "Trouble misc."}
+        c = {name = "Trouble misc."},
+        o = {name = "Org mode"}
     },
     {prefix = "<leader>"}
 )
@@ -471,3 +472,4 @@ require("themery").setup({
   themes = {"gruvbox-material", "rose-pine", "nordic"}, -- Your list of installed colorschemes
   livePreview = true, -- Apply theme while browsing. Default to true.
 })
+require("neocord").setup()
