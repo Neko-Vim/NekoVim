@@ -114,8 +114,9 @@ require("lazy").setup(
                         dashboard.button("s", "  > Settings", ":e $MYVIMRC<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
+                        dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>"),
+                        dashboard.button("p", "🎮 > Games", ":Playtime<CR>"),
                         dashboard.button("q", "  > Quit", ":qa<CR>"),
-                        dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>")
                     }
 
                     -- Set footer
@@ -322,7 +323,7 @@ require("lazy").setup(
             },
             {
                 "rktjmp/playtime.nvim"
-            }
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -412,7 +413,7 @@ wk.register(
         },
         a = {
             name = "Apps",
-            f = {"<cmd>NvimTreeOpen<cr>", "Open file explorer"},
+            f = {"cmd>NvimTreeOpen<cr>", "Open file explorer"},
             l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
             s = {"<cmd>Alpha<cr>", "Start screen"},
             m = {"<cmd>Mason<cr>", "Mason.nvim"},
@@ -473,4 +474,7 @@ require("themery").setup({
   themes = {"gruvbox-material", "rose-pine", "nordic"}, -- Your list of installed colorschemes
   livePreview = true, -- Apply theme while browsing. Default to true.
 })
-require("neocord").setup()
+require("neocord").setup({
+    -- General options
+    logo                = "https://i.postimg.cc/RVgnbrXy/NeoVim.png",                     -- "auto" or url
+})
