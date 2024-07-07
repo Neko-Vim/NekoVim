@@ -282,7 +282,8 @@ require("lazy").setup(
                 "romgrk/barbar.nvim"
             },
             {
-                "neoclide/coc.nvim"
+                "neoclide/coc.nvim",
+                branch = "release"
             },
             {
                 "nvim-tree/nvim-tree.lua"
@@ -415,11 +416,7 @@ wk.register(
             t = {"<cmd>Tetris<cr>", "Tetris"},
             T = {"<cmd>Themery<cr>", "Themery"},
         },
-        w = {
-            name = "Save",
-            w = {"<cmd>w<cr>", "Save"},
-            q = {"<cmd>wq<cr>", "Save and quit"}
-        },
+        w = {name = "VimWiki"},
         t = {"<cmd>term<cr>", "Terminal"},
         r = {"<cmd>term<cr>browser-sync start -f -s<cr>", "Run JS in browser"},
         x = {name = "Trouble"},
