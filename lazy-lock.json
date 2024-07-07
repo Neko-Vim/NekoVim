@@ -1,6 +1,6 @@
 {
   "LuaSnip": { "branch": "master", "commit": "ce0a05ab4e2839e1c48d072c5236cce846a387bc" },
-  "NekoVimRPC": { "branch": "main", "commit": "da21a5010b25a654e018457be4bc9f4cda123ded" },
+  "NekoVimRPC": { "branch": "main", "commit": "b82680073a7a51c08bed2d8e85eb7975649a25a8" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
   "barbar.nvim": { "branch": "master", "commit": "d181f2cfd4b828f9c6f1e10e69c68241de59f54f" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
