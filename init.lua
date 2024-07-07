@@ -114,8 +114,8 @@ require("lazy").setup(
                         dashboard.button("s", "  > Settings", ":e $MYVIMRC<CR>"),
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
+                        dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>"),
                         dashboard.button("q", "  > Quit", ":qa<CR>"),
-                        dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>")
                     }
 
                     -- Set footer
@@ -138,9 +138,7 @@ require("lazy").setup(
                     alpha.setup(dashboard.opts)
 
                     -- Disable folding on alpha buffer
-                    vim.cmd([[
-    			    autocmd FileType alpha setlocal nofoldenable
-		            ]])
+                    vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
                 end
             },
             {
@@ -322,7 +320,26 @@ require("lazy").setup(
             },
             {
                 "rktjmp/playtime.nvim"
-            }
+            },
+            {
+                "kdheepak/lazygit.nvim",
+                cmd = {
+                    "LazyGit",
+                    "LazyGitConfig",
+                    "LazyGitCurrentFile",
+                    "LazyGitFilter",
+                    "LazyGitFilterCurrentFile",
+                },
+                -- optional for floating window border decoration
+                dependencies = {
+                    "nvim-lua/plenary.nvim",
+                },
+                -- setting the keybinding for LazyGit with 'keys' is recommended in
+                -- order to load the plugin when the command is run for the first time
+                keys = {
+                    { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+                }
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
