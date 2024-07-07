@@ -320,6 +320,9 @@ require("lazy").setup(
                 'Neko-Vim/NekoVimRPC',
                 event = "VeryLazy"
             },
+            {
+                "rktjmp/playtime.nvim"
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -415,6 +418,7 @@ wk.register(
             m = {"<cmd>Mason<cr>", "Mason.nvim"},
             t = {"<cmd>Tetris<cr>", "Tetris"},
             T = {"<cmd>Themery<cr>", "Themery"},
+            g = {"<cmd>Playtime<cr>", "Card games"}
         },
         w = {name = "VimWiki"},
         t = {"<cmd>term<cr>", "Terminal"},
