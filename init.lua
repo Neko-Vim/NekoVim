@@ -18,17 +18,17 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup(
     {
         spec = {
-              {
+            {
                   "vhyrro/luarocks.nvim",
                   priority = 1000,
                   config = true,
-              },
-  	      {
-    "nvim-neorg/neorg",
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-    version = "*", -- Pin Neorg to the latest stable release
-    config = true,
-},
+            },
+  	        {
+                "nvim-neorg/neorg",
+                lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+                version = "*", -- Pin Neorg to the latest stable release
+                config = true,
+            },
             {
                 "nvim-orgmode/orgmode",
                 event = "VeryLazy",
@@ -184,6 +184,7 @@ require("lazy").setup(
             },
             {
                 'L3MON4D3/LuaSnip',
+                dependencies = { "rafamadriz/friendly-snippets" },
                 version = "v2.*",
                 build = "make install_jsregexp",
             },
@@ -459,6 +460,7 @@ wk.register(
     },
     {prefix = "<leader>"}
 )
+require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
     autocmd StdinReadPre * let s:std_in=1
