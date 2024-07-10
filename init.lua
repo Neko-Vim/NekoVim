@@ -476,6 +476,7 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
 ]]
 )
 require("gitsigns").setup()
