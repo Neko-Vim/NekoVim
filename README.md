@@ -17,5 +17,5 @@ Clone this repository in either %localappdata%\nvim (Win32) or ~/.config/nvim (U
 * Which-key.nvim
 * Organisation
 ## Screenshots
-![image](https://github.com/Neko-Vim/NekoVim/assets/118553985/3c74c4da-1f92-4232-9c5e-c6c967996eb3)
-![image](https://github.com/Neko-Vim/NekoVim/assets/118553985/752c52bd-712c-40bd-9ed5-3b0b675c4f15)
+![image](https://github.com/Neko-Vim/NekoVim/assets/118553985/6ed63393-9d85-4ae7-b1a4-38d66152aede)
+![image](https://github.com/Neko-Vim/NekoVim/assets/118553985/741a026a-2c20-4d6e-97aa-cf04ce96bcb5)
