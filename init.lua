@@ -476,7 +476,7 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
-    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
+    inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
 ]]
 )
 require("gitsigns").setup()
@@ -510,3 +510,4 @@ require("neocord").setup({
     -- General options
     logo                = "https://i.postimg.cc/RVgnbrXy/NeoVim.png",                     -- "auto" or url
 })
+require("luasnip.loaders.from_vscode").lazy_load()
