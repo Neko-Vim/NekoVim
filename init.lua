@@ -19,15 +19,15 @@ require("lazy").setup(
     {
         spec = {
             {
-                  "vhyrro/luarocks.nvim",
-                  priority = 1000,
-                  config = true,
+                "vhyrro/luarocks.nvim",
+                priority = 1000,
+                config = true
             },
-  	        {
+            {
                 "nvim-neorg/neorg",
                 lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
                 version = "*", -- Pin Neorg to the latest stable release
-                config = true,
+                config = true
             },
             {
                 "nvim-orgmode/orgmode",
@@ -109,12 +109,11 @@ require("lazy").setup(
 
                     -- Set header
                     dashboard.section.header.val = {
-                        [[███╗   ██╗███████╗██╗  ██╗ ██████╗ ██╗   ██╗██╗███╗   ███╗       ██████╗]],
-                        [[████╗  ██║██╔════╝██║ ██╔╝██╔═══██╗██║   ██║██║████╗ ████║    ██╗╚════██╗      :3]],
-                        [[██╔██╗ ██║█████╗  █████╔╝ ██║   ██║██║   ██║██║██╔████╔██║    ╚═╝ █████╔╝    :3]],
-                        [[██║╚██╗██║██╔══╝  ██╔═██╗ ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║    ██╗ ╚═══██╗  :3]],
-                        [[██║ ╚████║███████╗██║  ██╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║    ╚═╝██████╔╝]],
-                        [[╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝       ╚═════╝]]
+                        [[ _      _____ _  __ ____  _     _  _      _     _____ ]],
+                        [[/ \  /|/  __// |/ //  _ \/ \ |\/ \/ \__/|/ \  __\__  \]],
+                        [[| |\ |||  \  |   / | / \|| | //| || |\/||| |  \/  /  |]],
+                        [[| | \|||  /_ |   \ | \_/|| \// | || |  ||\_/  __ _\  |]],
+                        [[\_/  \|\____\\_|\_\\____/\__/  \_/\_/  \|(_)  \//____/]]
                     }
 
                     -- Set menu
@@ -126,7 +125,7 @@ require("lazy").setup(
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
                         dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>"),
-                        dashboard.button("q", "  > Quit", ":qa<CR>"),
+                        dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
                     -- Set footer
@@ -171,22 +170,22 @@ require("lazy").setup(
                 "nvim-treesitter/nvim-treesitter"
             },
             {
-                'williamboman/mason-lspconfig.nvim'
+                "williamboman/mason-lspconfig.nvim"
             },
             {
-                'neovim/nvim-lspconfig'
+                "neovim/nvim-lspconfig"
             },
             {
-                'hrsh7th/cmp-nvim-lsp'
+                "hrsh7th/cmp-nvim-lsp"
             },
             {
-                'hrsh7th/nvim-cmp'
+                "hrsh7th/nvim-cmp"
             },
             {
-                'L3MON4D3/LuaSnip',
-                dependencies = { "rafamadriz/friendly-snippets" },
+                "L3MON4D3/LuaSnip",
+                dependencies = {"rafamadriz/friendly-snippets"},
                 version = "v2.*",
-                build = "make install_jsregexp",
+                build = "make install_jsregexp"
             },
             {
                 "folke/which-key.nvim",
@@ -320,16 +319,16 @@ require("lazy").setup(
                 name = "rose-pine"
             },
             {
-                "sainnhe/gruvbox-material",
+                "sainnhe/gruvbox-material"
             },
             {
                 "vimwiki/vimwiki"
             },
             {
-                'zaldih/themery.nvim'
+                "zaldih/themery.nvim"
             },
-            { 
-                'Neko-Vim/NekoVimRPC',
+            {
+                "Neko-Vim/NekoVimRPC",
                 event = "VeryLazy"
             },
             {
@@ -342,18 +341,18 @@ require("lazy").setup(
                     "LazyGitConfig",
                     "LazyGitCurrentFile",
                     "LazyGitFilter",
-                    "LazyGitFilterCurrentFile",
+                    "LazyGitFilterCurrentFile"
                 },
                 -- optional for floating window border decoration
                 dependencies = {
-                    "nvim-lua/plenary.nvim",
+                    "nvim-lua/plenary.nvim"
                 },
                 -- setting the keybinding for LazyGit with 'keys' is recommended in
                 -- order to load the plugin when the command is run for the first time
                 keys = {
-                    { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+                    {"<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit"}
                 }
-            },
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -491,23 +490,29 @@ require("nvim-tree").setup()
 require("mini.map").setup()
 
 vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
-require("staline").setup({
-    defaults = {
-        left_separator = "",
-        right_separator = ""
-    },
-    lsp_symbols = {
-        Error="",
-        Info="",
+require("staline").setup(
+    {
+        defaults = {
+            left_separator = "",
+            right_separator = ""
+        },
+        lsp_symbols = {
+            Error = "",
+            Info = ""
+        }
     }
-})
+)
 -- Minimal config
-require("themery").setup({
-  themes = {"gruvbox-material", "rose-pine", "nordic"}, -- Your list of installed colorschemes
-  livePreview = true, -- Apply theme while browsing. Default to true.
-})
-require("neocord").setup({
-    -- General options
-    logo                = "https://i.postimg.cc/RVgnbrXy/NeoVim.png",                     -- "auto" or url
-})
+require("themery").setup(
+    {
+        themes = {"gruvbox-material", "rose-pine", "nordic"}, -- Your list of installed colorschemes
+        livePreview = true -- Apply theme while browsing. Default to true.
+    }
+)
+require("neocord").setup(
+    {
+        -- General options
+        logo = "https://i.postimg.cc/RVgnbrXy/NeoVim.png" -- "auto" or url
+    }
+)
 require("luasnip.loaders.from_vscode").lazy_load()
