@@ -475,8 +475,7 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
-    inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
-]]
+    ]]
 )
 require("gitsigns").setup()
 if vim.g.neovide then
@@ -493,12 +492,23 @@ vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>'
 require("staline").setup(
     {
         defaults = {
-            left_separator = "",
+            left_separator = "",
             right_separator = ""
         },
         lsp_symbols = {
             Error = "",
             Info = ""
+        },
+        sections = {
+            left = {
+                ' ','-mode', 'left_sep', '  ', 'right_sep', '-file_size', 'left_sep', 'cool_symbol'
+            },
+            mid = {
+                'right_sep', '-file_name', 'left_sep'
+            },
+            right = {
+                'StalineGit', 'branch'
+            }
         }
     }
 )
