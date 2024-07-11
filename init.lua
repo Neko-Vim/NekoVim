@@ -19,6 +19,14 @@ require("lazy").setup(
     {
         spec = {
             {
+                "chikko80/error-lens.nvim",
+                event = "BufRead",
+                dependencies = {
+                    "nvim-telescope/telescope.nvim"
+                },
+                opts = {}
+            },
+            {
                 "vhyrro/luarocks.nvim",
                 priority = 1000,
                 config = true
@@ -501,13 +509,23 @@ require("staline").setup(
         },
         sections = {
             left = {
-                ' ','-mode', 'left_sep', '  ', 'right_sep', '-file_size', 'left_sep', 'cool_symbol'
+                " ",
+                "-mode",
+                "left_sep",
+                "  ",
+                "right_sep",
+                "-file_size",
+                "left_sep",
+                "cool_symbol"
             },
             mid = {
-                'right_sep', '-file_name', 'left_sep'
+                "right_sep",
+                "-file_name",
+                "left_sep"
             },
             right = {
-                'StalineGit', 'branch'
+                "StalineGit",
+                "branch"
             }
         }
     }
