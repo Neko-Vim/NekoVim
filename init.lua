@@ -100,9 +100,6 @@ require("lazy").setup(
                 }
             },
             {
-                "shaunsingh/nord.nvim"
-            },
-            {
                 "nvim-telescope/telescope.nvim",
                 tag = "0.1.8",
                 dependencies = {"nvim-lua/plenary.nvim"}
@@ -134,13 +131,11 @@ require("lazy").setup(
                         dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
-                    dashboard.section.footer.val =
-                        [[
-       |\      _,,,---,,_
-ZZZzz /,`.-'`'    -.  ;-;;,_
-      |,4-  ) )-,_. ,\ (  `'-'
-      '---''(_/--'  `-'\_)
-]]
+                    dashboard.section.footer.val = {
+                        [[       |\      _,,,---,,_]],
+[[ZZZzz /,`.-'`'    -.  ;-;;,_]],
+[[      |,4-  ) )-,_. ,\ (  `'-']],
+[[      '---''(_/--'  `-'\_)]]}
                     -- Send config to alpha
                     alpha.setup(dashboard.opts)
 
@@ -406,8 +401,7 @@ wk.add({
     { "<leader>x", group = "Trouble" },
 })
 require("luasnip.loaders.from_vscode").lazy_load()
-vim.cmd(
-    [[
+vim.cmd([[
     autocmd StdinReadPre * let s:std_in=1
     filetype plugin indent on
     set tabstop=4
@@ -419,9 +413,9 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
+    colorscheme terafox " just there as an example, available themes are below
     inoremap <silent><expr> + coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
-    ]]
-)
+]])
 require("gitsigns").setup()
 if vim.g.neovide then
     vim.o.guifont = "Cascadia Code NF"
@@ -471,7 +465,7 @@ require("staline").setup(
 -- Minimal config
 require("themery").setup(
     {
-        themes = {"gruvbox-material", "rose-pine", "nord", "dracula", "nightfox", "dayfox", "dawnfox", "duskfox", "nordfox", "terafox", "carbonfox"}, -- Your list of installed colorschemes
+        themes = {"gruvbox-material", "rose-pine", "dracula", "nightfox", "dayfox", "dawnfox", "duskfox", "nordfox", "terafox", "carbonfox"}, -- Your list of installed colorschemes
         livePreview = true -- Apply theme while browsing. Default to true.
     }
 )
