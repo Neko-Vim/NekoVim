@@ -517,16 +517,17 @@ require("staline").setup(
                 "right_sep",
                 "-file_size",
                 "left_sep",
-                "cool_symbol"
             },
             mid = {
                 "right_sep",
                 "-file_name",
+                "lsp",
                 "left_sep"
             },
             right = {
-                "StalineGit",
-                "branch"
+                "branch",
+                "git_diff",
+                "cool_symbol"
             }
         }
     }
