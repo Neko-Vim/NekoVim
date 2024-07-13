@@ -430,8 +430,7 @@ require "nordic".setup {
 }
 vim.opt.termguicolors = true
 local wk = require("which-key")
-wk.register(
-  {
+wk.add({
     { "<leader>a", group = "Apps" },
     { "<leader>aT", "<cmd>Themery<cr>", desc = "Themery" },
     { "<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer" },
@@ -451,8 +450,7 @@ wk.register(
     { "<leader>t", "<cmd>term<cr>", desc = "Terminal" },
     { "<leader>w", group = "VimWiki" },
     { "<leader>x", group = "Trouble" },
-  }
-)
+})
 require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
