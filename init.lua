@@ -136,22 +136,13 @@ require("lazy").setup(
                         dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
-                    -- Set footer
-                    --   NOTE: This is currently a feature in my fork of alpha-nvim (opened PR #21, will update snippet if added to main)
-                    --   To see test this yourself, add the function as a dependecy in packer and uncomment the footer lines
-                    --   ```init.lua
-                    --   return require('packer').startup(function()
-                    --       use 'wbthomason/packer.nvim'
-                    --       use {
-                    --           'goolord/alpha-nvim', branch = 'feature/startify-fortune',
-                    --           requires = {'BlakeJC94/alpha-nvim-fortune'},
-                    --           config = function() require("config.alpha") end
-                    --       }
-                    --   end)
-                    --   ```
-                    -- local fortune = require("alpha.fortune")
-                    -- dashboard.section.footer.val = fortune()
-
+                    dashboard.section.footer.val =
+                        [[
+       |\      _,,,---,,_
+ZZZzz /,`.-'`'    -.  ;-;;,_
+      |,4-  ) )-,_. ,\ (  `'-'
+      '---''(_/--'  `-'\_)
+]]
                     -- Send config to alpha
                     alpha.setup(dashboard.opts)
 
@@ -440,38 +431,32 @@ require "nordic".setup {
 vim.opt.termguicolors = true
 local wk = require("which-key")
 wk.register(
-    {
-        g = {
-            name = "Git",
-            c = {"<cmd>w | Git commit -a<cr>", "Save and commit"},
-            C = {"<cmd>Git checkout<cr>", "Check out origin"},
-            p = {"<cmd>Git push<cr>", "Push commits"},
-            f = {"<cmd>Git pull<cr>", "Fetch from origin"}
-        },
-        a = {
-            name = "Apps",
-            f = {"<cmd>NvimTreeOpen<cr>", "Open file explorer"},
-            l = {"<cmd>Lazy<cr>", "Lazy.nvim"},
-            s = {"<cmd>Alpha<cr>", "Start screen"},
-            m = {"<cmd>Mason<cr>", "Mason.nvim"},
-            t = {"<cmd>Tetris<cr>", "Tetris"},
-            T = {"<cmd>Themery<cr>", "Themery"},
-            g = {"<cmd>Playtime<cr>", "Card games"}
-        },
-        w = {name = "VimWiki"},
-        t = {"<cmd>term<cr>", "Terminal"},
-        r = {"<cmd>term<cr>browser-sync start -f -s<cr>", "Run JS in browser"},
-        x = {name = "Trouble"},
-        c = {name = "Trouble misc."},
-        o = {name = "Org mode"}
-    },
-    {prefix = "<leader>"}
+  {
+    { "<leader>a", group = "Apps" },
+    { "<leader>aT", "<cmd>Themery<cr>", desc = "Themery" },
+    { "<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer" },
+    { "<leader>ag", "<cmd>Playtime<cr>", desc = "Card games" },
+    { "<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim" },
+    { "<leader>am", "<cmd>Mason<cr>", desc = "Mason.nvim" },
+    { "<leader>as", "<cmd>Alpha<cr>", desc = "Start screen" },
+    { "<leader>at", "<cmd>Tetris<cr>", desc = "Tetris" },
+    { "<leader>c", group = "Trouble misc." },
+    { "<leader>g", group = "Git" },
+    { "<leader>gC", "<cmd>Git checkout<cr>", desc = "Check out origin" },
+    { "<leader>gc", "<cmd>w | Git commit -a<cr>", desc = "Save and commit" },
+    { "<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin" },
+    { "<leader>gp", "<cmd>Git push<cr>", desc = "Push commits" },
+    { "<leader>o", group = "Org mode" },
+    { "<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser" },
+    { "<leader>t", "<cmd>term<cr>", desc = "Terminal" },
+    { "<leader>w", group = "VimWiki" },
+    { "<leader>x", group = "Trouble" },
+  }
 )
 require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
     autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * NvimTreeOpen
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
@@ -516,7 +501,7 @@ require("staline").setup(
                 "  ",
                 "right_sep",
                 "-file_size",
-                "left_sep",
+                "left_sep"
             },
             mid = {
                 "right_sep",
