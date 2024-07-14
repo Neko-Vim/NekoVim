@@ -338,7 +338,7 @@ require("lazy").setup(
             {
                 "rktjmp/playtime.nvim"
             },
-        {
+            {
                 "kdheepak/lazygit.nvim",
                 cmd = {
                     "LazyGit",
@@ -356,7 +356,15 @@ require("lazy").setup(
                 keys = {
                     {"<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit"}
                 }
-            }
+            },
+            {
+                "sainttttt/flesh-and-blood"
+            },
+            {
+                "catppuccin/nvim",
+                name = "catppuccin",
+                priority = 1000
+            },
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -510,9 +518,14 @@ require("themery").setup(
             "tokyonight-night",
             "tokyonight-storm",
             "tokyonight-day",
-            "tokyonight-moon"
-        }, -- Your list of installed colorschemes
-        livePreview = true -- Apply theme while browsing. Default to true.
+            "tokyonight-moon",
+            "flesh-and-blood",
+            "catppuccin-latte",
+            "catppuccin-frappe",
+            "catppuccin-macchiato",
+            "catppuccin-mocha"
+        },
+        livePreview = true
     }
 )
 require("neocord").setup(
