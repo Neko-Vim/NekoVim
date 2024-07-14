@@ -19,6 +19,12 @@ require("lazy").setup(
     {
         spec = {
             {
+                "folke/tokyonight.nvim",
+                lazy = false,
+                priority = 1000,
+                opts = {}
+            },
+            {
                 "chikko80/error-lens.nvim",
                 event = "BufRead",
                 dependencies = {
@@ -133,9 +139,10 @@ require("lazy").setup(
 
                     dashboard.section.footer.val = {
                         [[       |\      _,,,---,,_]],
-[[ZZZzz /,`.-'`'    -.  ;-;;,_]],
-[[      |,4-  ) )-,_. ,\ (  `'-']],
-[[      '---''(_/--'  `-'\_)]]}
+                        [[ZZZzz /,`.-'`'    -.  ;-;;,_]],
+                        [[      |,4-  ) )-,_. ,\ (  `'-']],
+                        [[      '---''(_/--'  `-'\_)]]
+                    }
                     -- Send config to alpha
                     alpha.setup(dashboard.opts)
 
@@ -216,7 +223,7 @@ require("lazy").setup(
                         },
                         icons = {
                             breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-                            separator = "➜", -- symbol used between a key and it's label
+                            separator = "➜ ", -- symbol used between a key and it's label
                             group = "+" -- symbol prepended to a group
                         },
                         popup_mappings = {
@@ -282,7 +289,9 @@ require("lazy").setup(
                 "lewis6991/gitsigns.nvim"
             },
             {
-                "romgrk/barbar.nvim"
+                "akinsho/bufferline.nvim",
+                version = "*",
+                dependencies = "nvim-tree/nvim-web-devicons"
             },
             {
                 "neoclide/coc.nvim",
@@ -329,7 +338,7 @@ require("lazy").setup(
             {
                 "rktjmp/playtime.nvim"
             },
-            {
+        {
                 "kdheepak/lazygit.nvim",
                 cmd = {
                     "LazyGit",
@@ -378,30 +387,32 @@ require("noice").setup(
     }
 )
 vim.opt.termguicolors = true
-local wk = require("which-key")
-wk.add({
-    { "<leader>a", group = "Apps" },
-    { "<leader>aT", "<cmd>Themery<cr>", desc = "Themery" },
-    { "<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer" },
-    { "<leader>ag", "<cmd>Playtime<cr>", desc = "Card games" },
-    { "<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim" },
-    { "<leader>am", "<cmd>Mason<cr>", desc = "Mason.nvim" },
-    { "<leader>as", "<cmd>Alpha<cr>", desc = "Start screen" },
-    { "<leader>at", "<cmd>Tetris<cr>", desc = "Tetris" },
-    { "<leader>c", group = "Trouble misc." },
-    { "<leader>g", group = "Git" },
-    { "<leader>gC", "<cmd>Git checkout<cr>", desc = "Check out origin" },
-    { "<leader>gc", "<cmd>w | Git commit -a<cr>", desc = "Save and commit" },
-    { "<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin" },
-    { "<leader>gp", "<cmd>Git push<cr>", desc = "Push commits" },
-    { "<leader>o", group = "Org mode" },
-    { "<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser" },
-    { "<leader>t", "<cmd>term<cr>", desc = "Terminal" },
-    { "<leader>w", group = "VimWiki" },
-    { "<leader>x", group = "Trouble" },
-})
+require("which-key").add(
+    {
+        {"<leader>a", group = "Apps"},
+        {"<leader>aT", "<cmd>Themery<cr>", desc = "Themery"},
+        {"<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer"},
+        {"<leader>ag", "<cmd>Playtime<cr>", desc = "Card games"},
+        {"<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim"},
+        {"<leader>am", "<cmd>Mason<cr>", desc = "Mason.nvim"},
+        {"<leader>as", "<cmd>Alpha<cr>", desc = "Start screen"},
+        {"<leader>at", "<cmd>Tetris<cr>", desc = "Tetris"},
+        {"<leader>c", group = "Trouble misc."},
+        {"<leader>g", group = "Git"},
+        {"<leader>gC", "<cmd>Git checkout<cr>", desc = "Check out origin"},
+        {"<leader>gc", "<cmd>w | Git commit -a<cr>", desc = "Save and commit"},
+        {"<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin"},
+        {"<leader>gp", "<cmd>Git push<cr>", desc = "Push commits"},
+        {"<leader>o", group = "Org mode"},
+        {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
+        {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
+        {"<leader>w", group = "VimWiki"},
+        {"<leader>x", group = "Trouble"}
+    }
+)
 require("luasnip.loaders.from_vscode").lazy_load()
-vim.cmd([[
+vim.cmd(
+    [[
     autocmd StdinReadPre * let s:std_in=1
     filetype plugin indent on
     set tabstop=4
@@ -415,7 +426,8 @@ vim.cmd([[
     syntax on
     colorscheme terafox " just there as an example, available themes are below
     inoremap <silent><expr> + coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
-]])
+]]
+)
 require("gitsigns").setup()
 if vim.g.neovide then
     vim.o.guifont = "Cascadia Code NF"
@@ -431,7 +443,7 @@ vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>'
 require("staline").setup(
     {
         defaults = {
-            left_separator = "",
+            left_separator = "",
             right_separator = ""
         },
         lsp_symbols = {
@@ -440,32 +452,66 @@ require("staline").setup(
         },
         sections = {
             left = {
-                " ",
+                "- ",
                 "-mode",
-                "left_sep",
-                "  ",
-                "right_sep",
-                "-file_size",
-                "left_sep"
+                "left_sep_double",
+                "file_name",
+                "file_size",
             },
-            mid = {
-                "right_sep",
-                "-file_name",
-                "lsp",
-                "left_sep"
-            },
+            mid = {},
             right = {
-                "branch",
-                "git_diff",
-                "cool_symbol"
+                "lsp",
+                "lsp_name",
+                " ",
+                "right_sep",
+                "-cwd",
+                "-cool_symbol"
             }
+        },
+        mode_icons = {
+            ["n"] = "NORMAL",
+            ["no"] = "NORMAL",
+            ["niI"] = "NORMAL",
+            ["niR"] = "NORMAL",
+            ["niV"] = "NORMAL",
+            ["nov"] = "NORMAL",
+            ["noV"] = "NORMAL",
+            [""] = "NORMAL",
+            ["i"] = "INSERT",
+            ["ic"] = "INSERT",
+            ["ix"] = "INSERT",
+            ["s"] = "INSERT",
+            ["S"] = "INSERT",
+            ["v"] = "SELECT",
+            ["V"] = "SELECT",
+            ["r"] = "SEARCH",
+            ["r?"] = "HELP",
+            ["c"] = "CMD",
+            ["t"] = "CMDLINE",
+            ["!"] = "FILTER"
         }
     }
 )
 -- Minimal config
 require("themery").setup(
     {
-        themes = {"gruvbox-material", "rose-pine", "dracula", "nightfox", "dayfox", "dawnfox", "duskfox", "nordfox", "terafox", "carbonfox"}, -- Your list of installed colorschemes
+        themes = {
+            "gruvbox-material",
+            "rose-pine",
+            "dracula",
+            "nightfox",
+            "dayfox",
+            "dawnfox",
+            "duskfox",
+            "nordfox",
+            "terafox",
+            "carbonfox",
+            "tokyonight",
+            "tokyonight-night",
+            "tokyonight-storm",
+            "tokyonight-day",
+            "tokyonight-moon"
+        }, -- Your list of installed colorschemes
         livePreview = true -- Apply theme while browsing. Default to true.
     }
 )
@@ -476,3 +522,16 @@ require("neocord").setup(
     }
 )
 require("luasnip.loaders.from_vscode").lazy_load()
+require("bufferline").setup {
+    options = {
+        separator_style = "slope",
+        always_show_bufferline = "true",
+        show_close_icon = "true",
+        mode = "buffers",
+        diagnostics = "coc",
+        diagnostics_indicator = function(count, level)
+            local icon = level:match("error") and " " or ""
+            return " " .. icon .. count
+        end
+    }
+}
