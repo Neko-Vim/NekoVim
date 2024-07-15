@@ -19,6 +19,10 @@ require("lazy").setup(
     {
         spec = {
             {
+                "embark-theme/vim",
+                name = "embark"
+            },
+            {
                 "folke/tokyonight.nvim",
                 lazy = false,
                 priority = 1000,
