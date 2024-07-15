@@ -444,7 +444,8 @@ require("themery").setup(
             "catppuccin-latte",
             "catppuccin-frappe",
             "catppuccin-macchiato",
-            "catppuccin-mocha"
+            "catppuccin-mocha",
+            "embark"
         },
         livePreview = true
     }
