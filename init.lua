@@ -332,6 +332,8 @@ require("which-key").add(
         {"<leader>gc", "<cmd>w | Git commit -a<cr>", desc = "Save and commit"},
         {"<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin"},
         {"<leader>gp", "<cmd>Git push<cr>", desc = "Push commits"},
+        {"<leader>gs", "<cmd>Git stash<cr>", desc = "Stash"},
+        {"<leader>gr", "<cmd>Git reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
         {"<leader>o", group = "Org mode"},
         {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
