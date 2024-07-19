@@ -69,10 +69,6 @@ require("lazy").setup(
                 end
             },
             {
-                -- amongst your other plugins
-                {"akinsho/toggleterm.nvim", version = "*", config = true}
-            },
-            {
                 "folke/trouble.nvim",
                 opts = {}, -- for default options, refer to the configuration section for custom setup.
                 cmd = "Trouble",
@@ -250,9 +246,6 @@ require("lazy").setup(
                 "vimwiki/vimwiki"
             },
             {
-                "zaldih/themery.nvim"
-            },
-            {
                 "Neko-Vim/NekoVimRPC",
                 event = "VeryLazy"
             },
@@ -285,6 +278,15 @@ require("lazy").setup(
                 "catppuccin/nvim",
                 name = "catppuccin",
                 priority = 1000
+            },
+            {
+                "projekt0n/github-nvim-theme"
+            },
+            {
+                "loctvl842/monokai-pro.nvim"
+            },
+            {
+                "rebelot/kanagawa.nvim"
             },
         },
         -- Configure any other settings here. See the documentation for more details.
@@ -319,7 +321,7 @@ vim.opt.termguicolors = true
 require("which-key").add(
     {
         {"<leader>a", group = "Apps"},
-        {"<leader>aT", "<cmd>Themery<cr>", desc = "Themery"},
+        {"<leader>aT", "<cmd>Telescope colorscheme<cr>", desc = "Themery"},
         {"<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer"},
         {"<leader>ag", "<cmd>Playtime<cr>", desc = "Card games"},
         {"<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim"},
@@ -341,6 +343,7 @@ require("which-key").add(
         {"<leader>x", group = "Trouble"}
     }
 )
+require("monokai-pro").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
@@ -423,35 +426,6 @@ require("staline").setup(
         }
     }
 )
--- Minimal config
-require("themery").setup(
-    {
-        themes = {
-            "gruvbox-material",
-            "rose-pine",
-            "dracula",
-            "nightfox",
-            "dayfox",
-            "dawnfox",
-            "duskfox",
-            "nordfox",
-            "terafox",
-            "carbonfox",
-            "tokyonight",
-            "tokyonight-night",
-            "tokyonight-storm",
-            "tokyonight-day",
-            "tokyonight-moon",
-            "flesh-and-blood",
-            "catppuccin-latte",
-            "catppuccin-frappe",
-            "catppuccin-macchiato",
-            "catppuccin-mocha",
-            "embark"
-        },
-        livePreview = true
-    }
-)
 require("neocord").setup(
     {
         -- General options
@@ -471,4 +445,11 @@ require("bufferline").setup {
             return " " .. icon .. count
         end
     }
+}
+require ("telescope").setup {
+  pickers = {
+    colorscheme = {
+      enable_preview = true
+    }
+  }
 }
