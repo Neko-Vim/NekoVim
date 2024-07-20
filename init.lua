@@ -169,6 +169,10 @@ require("lazy").setup(
                 "nvim-treesitter/nvim-treesitter"
             },
             {
+                "VonHeikemen/lsp-zero.nvim",
+                branch = "v3.x"
+            },
+            {
                 "williamboman/mason-lspconfig.nvim"
             },
             {
@@ -209,10 +213,6 @@ require("lazy").setup(
                 "akinsho/bufferline.nvim",
                 version = "*",
                 dependencies = "nvim-tree/nvim-web-devicons"
-            },
-            {
-                "neoclide/coc.nvim",
-                branch = "release"
             },
             {
                 "nvim-tree/nvim-tree.lua"
@@ -291,6 +291,9 @@ require("lazy").setup(
             {
                 "gruvbox-community/gruvbox"
             },
+            {
+                "saadparwaiz1/cmp_luasnip"
+            }
         },
         -- Configure any other settings here. See the documentation for more details.
         -- colorscheme that will be used when installing plugins.
@@ -456,3 +459,17 @@ require ("telescope").setup {
     }
   }
 }
+require('mason-lspconfig').setup()
+require('mason-lspconfig').setup_handlers({
+  function(server)
+    require('lspconfig')[server].setup({})
+  end
+})
+require("cmp").setup({
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+    },
+    sources = {
+        { name = 'luasnip' },
+    },
+})
