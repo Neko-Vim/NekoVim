@@ -1,4 +1,3 @@
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -6,13 +5,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
 require("lazy").setup(
     {
         spec = {
@@ -33,8 +28,8 @@ require("lazy").setup(
             },
             {
                 "nvim-neorg/neorg",
-                lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-                version = "*", -- Pin Neorg to the latest stable release
+                lazy = false,
+                version = "*",
                 config = true
             },
             {
@@ -49,18 +44,11 @@ require("lazy").setup(
                             org_default_notes_file = "~/orgfiles/refile.org"
                         }
                     )
-
-                    -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
-                    -- add ~org~ to ignore_install
-                    -- require('nvim-treesitter.configs').setup({
-                    --   ensure_installed = 'all',
-                    --   ignore_install = { 'org' },
-                    -- })
                 end
             },
             {
                 "folke/trouble.nvim",
-                opts = {}, -- for default options, refer to the configuration section for custom setup.
+                opts = {},
                 cmd = "Trouble",
                 keys = {
                     {
@@ -251,12 +239,9 @@ require("lazy").setup(
                     "LazyGitFilter",
                     "LazyGitFilterCurrentFile"
                 },
-                -- optional for floating window border decoration
                 dependencies = {
                     "nvim-lua/plenary.nvim"
                 },
-                -- setting the keybinding for LazyGit with 'keys' is recommended in
-                -- order to load the plugin when the command is run for the first time
                 keys = {
                     {"<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit"}
                 }
@@ -288,10 +273,7 @@ require("lazy").setup(
                 "onsails/lspkind.nvim"
             }
         },
-        -- Configure any other settings here. See the documentation for more details.
-        -- colorscheme that will be used when installing plugins.
-        install = {colorscheme = {"rose-pine"}},
-        -- automatically check for plugin updates
+        install = {colorscheme = {"terafox"}},
         checker = {enabled = true}
     }
 )
@@ -299,20 +281,18 @@ require("mason").setup()
 require("noice").setup(
     {
         lsp = {
-            -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                 ["vim.lsp.util.stylize_markdown"] = true,
-                ["cmp.entry.get_documentation"] = true -- requires hrsh7th/nvim-cmp
+                ["cmp.entry.get_documentation"] = true
             }
         },
-        -- you can enable a preset for easier configuration
         presets = {
-            bottom_search = true, -- use a classic bottom cmdline for search
-            command_palette = true, -- position the cmdline and popupmenu together
-            long_message_to_split = true, -- long messages will be sent to a split
-            inc_rename = false, -- enables an input dialog for inc-rename.nvim
-            lsp_doc_border = false -- add a border to hover docs and signature help
+            bottom_search = true,
+            command_palette = true,
+            long_message_to_split = true,
+            inc_rename = false,
+            lsp_doc_border = false
         }
     }
 )
@@ -334,11 +314,7 @@ require("which-key").add(
         {"<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin"},
         {"<leader>gp", "<cmd>Git push<cr>", desc = "Push commits"},
         {"<leader>gs", "<cmd>Git stash<cr>", desc = "Stash"},
-        {
-            "<leader>gr",
-            "<cmd>Git reset --hard HEAD<cr>",
-            desc = "Reset to last commit (for if you introduced breaking changes)"
-        },
+        {"<leader>gr", "<cmd>Git reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
         {"<leader>o", group = "Org mode"},
         {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
@@ -365,9 +341,7 @@ vim.cmd(
 ]]
 )
 require("gitsigns").setup()
-if vim.g.neovide then
-    vim.o.guifont = "Cascadia Code NF"
-end
+
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
@@ -430,8 +404,7 @@ require("staline").setup(
 )
 require("neocord").setup(
     {
-        -- General options
-        logo = "https://i.postimg.cc/RVgnbrXy/NeoVim.png" -- "auto" or url
+        logo = "https://i.postimg.cc/RVgnbrXy/NeoVim.png"
     }
 )
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -457,24 +430,8 @@ require("telescope").setup {
 }
 require("lspkind").init(
     {
-        -- DEPRECATED (use mode instead): enables text annotations
-        --
-        -- default: true
-        -- with_text = true,
-
-        -- defines how annotations are shown
-        -- default: symbol
-        -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
         mode = "symbol_text",
-        -- default symbol map
-        -- can be either 'default' (requires nerd-fonts font) or
-        -- 'codicons' for codicon preset (requires vscode-codicons font)
-        --
-        -- default: 'default'
         preset = "codicons",
-        -- override preset symbols
-        --
-        -- default: {}
         symbol_map = {
             Text = "󰉿",
             Method = "󰆧",
@@ -518,7 +475,8 @@ require("cmp").setup(
             completeopt = "menu,menuone,noinsert"
         },
         sources = {
-            {name = "luasnip"}
+            {name = "luasnip"},
+            {name = 'nvim_lsp'},
         },
         mapping = require("cmp").mapping.preset.insert(
             {
