@@ -53,7 +53,7 @@ require("lazy").setup(
                 "folke/trouble.nvim",
                 opts = {},
                 cmd = "Trouble",
-                keys = {
+                    keys = {
                     {
                         "<leader>xx",
                         "<cmd>Trouble diagnostics toggle<cr>",
@@ -282,7 +282,8 @@ require("lazy").setup(
             },
         },
         install = {colorscheme = {"terafox"}},
-        checker = {enabled = true}
+        checker = {enabled = true},
+        ui = {border = "rounded"},
     }
 )
 require("mason").setup()
@@ -317,17 +318,18 @@ require("which-key").add(
         {"<leader>at", "<cmd>Tetris<cr>", desc = "Tetris"},
         {"<leader>c", group = "Trouble misc."},
         {"<leader>g", group = "Git"},
-        {"<leader>gC", "<cmd>Git checkout<cr>", desc = "Check out origin"},
-        {"<leader>gc", "<cmd>w | Git commit -a<cr>", desc = "Save and commit"},
-        {"<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin"},
-        {"<leader>gp", "<cmd>Git push<cr>", desc = "Push commits"},
-        {"<leader>gs", "<cmd>Git stash<cr>", desc = "Stash"},
-        {"<leader>gr", "<cmd>Git reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
+        {"<leader>gC", "<cmd>G checkout<cr>", desc = "Check out origin"},
+        {"<leader>gc", "<cmd>w | G commit -a<cr>", desc = "Save and commit"},
+        {"<leader>gf", "<cmd>G pull<cr>", desc = "Fetch from origin"},
+        {"<leader>gp", "<cmd>G push<cr>", desc = "Push commits"},
+        {"<leader>gs", "<cmd>G stash<cr>", desc = "Stash"},
+        {"<leader>gr", "<cmd>G reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
         {"<leader>o", group = "Org mode"},
         {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
         {"<leader>w", group = "VimWiki"},
-        {"<leader>x", group = "Trouble"}
+        {"<leader>x", group = "Trouble"},
+        {"<C-a>", "ggVG", desc = "Select all"},
     }
 )
 require("monokai-pro").setup()
