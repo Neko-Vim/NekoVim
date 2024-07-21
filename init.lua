@@ -1,5 +1,3 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -285,6 +283,9 @@ require("lazy").setup(
             },
             {
                 "saadparwaiz1/cmp_luasnip"
+            },
+            {
+                "onsails/lspkind.nvim"
             }
         },
         -- Configure any other settings here. See the documentation for more details.
@@ -333,7 +334,11 @@ require("which-key").add(
         {"<leader>gf", "<cmd>Git pull<cr>", desc = "Fetch from origin"},
         {"<leader>gp", "<cmd>Git push<cr>", desc = "Push commits"},
         {"<leader>gs", "<cmd>Git stash<cr>", desc = "Stash"},
-        {"<leader>gr", "<cmd>Git reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
+        {
+            "<leader>gr",
+            "<cmd>Git reset --hard HEAD<cr>",
+            desc = "Reset to last commit (for if you introduced breaking changes)"
+        },
         {"<leader>o", group = "Org mode"},
         {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
@@ -387,7 +392,7 @@ require("staline").setup(
                 "-mode",
                 "left_sep_double",
                 "file_name",
-                "file_size",
+                "file_size"
             },
             mid = {},
             right = {
@@ -443,27 +448,99 @@ require("bufferline").setup {
         end
     }
 }
-require ("telescope").setup {
-  pickers = {
-    colorscheme = {
-      enable_preview = true
+require("telescope").setup {
+    pickers = {
+        colorscheme = {
+            enable_preview = true
+        }
     }
-  }
 }
-require('mason-lspconfig').setup()
-require('mason-lspconfig').setup_handlers({
-  function(server)
-    require('lspconfig')[server].setup({})
-  end
-})
-require("cmp").setup({
-    completion = {
-        completeopt = 'menu,menuone,noinsert',
-    },
-    sources = {
-        { name = 'luasnip' },
-    },
-    mapping = require("cmp").mapping.preset.insert({
-        ['<CR>'] = require("cmp").mapping.confirm({ select = true }),
-    })
-})
+require("lspkind").init(
+    {
+        -- DEPRECATED (use mode instead): enables text annotations
+        --
+        -- default: true
+        -- with_text = true,
+
+        -- defines how annotations are shown
+        -- default: symbol
+        -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+        mode = "symbol_text",
+        -- default symbol map
+        -- can be either 'default' (requires nerd-fonts font) or
+        -- 'codicons' for codicon preset (requires vscode-codicons font)
+        --
+        -- default: 'default'
+        preset = "codicons",
+        -- override preset symbols
+        --
+        -- default: {}
+        symbol_map = {
+            Text = "󰉿",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰜢",
+            Variable = "󰀫",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "󰑭",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "󰈇",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "󰙅",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = ""
+        }
+    }
+)
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers(
+    {
+        function(server)
+            require("lspconfig")[server].setup({})
+        end
+    }
+)
+require("cmp").setup(
+    {
+        completion = {
+            completeopt = "menu,menuone,noinsert"
+        },
+        sources = {
+            {name = "luasnip"}
+        },
+        mapping = require("cmp").mapping.preset.insert(
+            {
+                ["<CR>"] = require("cmp").mapping.confirm({select = true})
+            }
+        ),
+        formatting = {
+            format = require("lspkind").cmp_format(
+                {
+                    mode = "symbol_text",
+                    menu = ({
+                        buffer = "[Buffer]",
+                        nvim_lsp = "[LSP]",
+                        luasnip = "[LuaSnip]",
+                        nvim_lua = "[Lua]",
+                        latex_symbols = "[Latex]"
+                    })
+                }
+            )
+        },
+        window = {
+            completion = require("cmp").config.window.bordered({border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}})
+        }
+    }
+)
