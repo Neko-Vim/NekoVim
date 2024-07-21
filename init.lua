@@ -210,10 +210,10 @@ require("lazy").setup(
                 "lewis6991/gitsigns.nvim"
             },
             {
-                'romgrk/barbar.nvim',
+                "romgrk/barbar.nvim",
                 dependencies = {
-                    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-                    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+                    "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+                    "nvim-tree/nvim-web-devicons" -- OPTIONAL: for file icons
                 }
             },
             {
@@ -363,7 +363,8 @@ require("which-key").add(
         {"<leader>x", group = "Trouble"},
         {"<C-a>", "ggVG", desc = "Select all"},
         {"<C-z>", "u", desc = "Undo"},
-        {"<C-s>", "<cmd>w<cr>", desc = "Save"}
+        {"<C-s>", "<cmd>w<cr>", desc = "Save"},
+        {"<C-x>", "<cmd>BufferClose<cr>", desc = "Close tab"}
     }
 )
 require("monokai-pro").setup()
@@ -387,20 +388,22 @@ vim.cmd(
 ]]
 )
 require("gitsigns").setup()
-vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "󰅚",
-            [vim.diagnostic.severity.WARN] = "󰀪",
-        },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-        },
-        numhl = {
-            [vim.diagnostic.severity.WARN] = 'WarningMsg',
-        },
-    },
-})
+vim.diagnostic.config(
+    {
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = "󰅚",
+                [vim.diagnostic.severity.WARN] = "󰀪"
+            },
+            linehl = {
+                [vim.diagnostic.severity.ERROR] = "ErrorMsg"
+            },
+            numhl = {
+                [vim.diagnostic.severity.WARN] = "WarningMsg"
+            }
+        }
+    }
+)
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
@@ -531,6 +534,8 @@ require("cmp").setup(
             }
         ),
         formatting = {
+            fields = { "kind", "abbr" },
+            expandable_indicator = true,
             format = require("lspkind").cmp_format(
                 {
                     mode = "symbol_text",
@@ -550,3 +555,4 @@ require("cmp").setup(
     }
 )
 require("ibl").setup()
+
