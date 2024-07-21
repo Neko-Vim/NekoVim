@@ -12,6 +12,28 @@ require("lazy").setup(
     {
         spec = {
             {
+                "yamatsum/nvim-nonicons",
+                dependencies = {"kyazdani42/nvim-web-devicons"}
+            },
+            {
+                "nvimdev/lspsaga.nvim"
+            },
+            {
+                "folke/lazydev.nvim",
+                ft = "lua", -- only load on lua files
+                opts = {
+                    library = {
+                        -- See the configuration section for more details
+                        -- Load luvit types when the `vim.uv` word is found
+                        {path = "luvit-meta/library", words = {"vim%.uv"}}
+                    }
+                }
+            },
+            {
+                "Bilal2453/luvit-meta",
+                lazy = true
+            },
+            {
                 "maxmx03/solarized.nvim"
             },
             {
@@ -56,15 +78,16 @@ require("lazy").setup(
                 "folke/trouble.nvim",
                 opts = {},
                 cmd = "Trouble",
-                    keys = {
+                dependencies = "nvim-tree/nvim-web-devicons",
+                keys = {
                     {
                         "<leader>xx",
-                        "<cmd>Trouble diagnostics toggle<cr>",
+                        "<cmd>Trouble diagnostics<cr>",
                         desc = "Diagnostics (Trouble)"
                     },
                     {
                         "<leader>xX",
-                        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                        "<cmd>Trouble diagnostics filter.buf=0<cr>",
                         desc = "Buffer Diagnostics (Trouble)"
                     },
                     {
@@ -285,16 +308,18 @@ require("lazy").setup(
             },
             {
                 "petertriho/nvim-scrollbar"
-            },
+            }
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true},
-        ui = {border = "rounded"},
+        ui = {border = "rounded"}
     }
 )
-require("mason").setup({
-    ui = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}}
-})
+require("mason").setup(
+    {
+        ui = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}}
+    }
+)
 require("noice").setup(
     {
         lsp = {
@@ -331,7 +356,11 @@ require("which-key").add(
         {"<leader>gf", "<cmd>G pull<cr>", desc = "Fetch from origin"},
         {"<leader>gp", "<cmd>G push --force<cr>", desc = "Push commits"},
         {"<leader>gs", "<cmd>G stash<cr>", desc = "Stash"},
-        {"<leader>gr", "<cmd>G reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
+        {
+            "<leader>gr",
+            "<cmd>G reset --hard HEAD<cr>",
+            desc = "Reset to last commit (for if you introduced breaking changes)"
+        },
         {"<leader>o", group = "Org mode"},
         {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
@@ -343,6 +372,8 @@ require("which-key").add(
     }
 )
 require("monokai-pro").setup()
+require("nvim-web-devicons").setup()
+require("nvim-web-devicons").get_icons()
 require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
@@ -360,6 +391,11 @@ vim.cmd(
 ]]
 )
 require("gitsigns").setup()
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
@@ -496,7 +532,7 @@ require("cmp").setup(
         },
         sources = {
             {name = "luasnip"},
-            {name = 'nvim_lsp'},
+            {name = "nvim_lsp"}
         },
         mapping = require("cmp").mapping.preset.insert(
             {
