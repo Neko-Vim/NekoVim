@@ -279,7 +279,7 @@ require("lazy").setup(
                 "rebelot/kanagawa.nvim"
             },
             {
-                "gruvbox-community/gruvbox"
+                "ellisonleao/gruvbox.nvim"
             },
             {
                 "saadparwaiz1/cmp_luasnip"
