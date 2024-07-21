@@ -16,6 +16,9 @@ require("lazy").setup(
                 name = "embark"
             },
             {
+                "stevearc/conform.nvim"
+            },
+            {
                 "folke/tokyonight.nvim",
                 lazy = false,
                 priority = 1000,
@@ -271,7 +274,12 @@ require("lazy").setup(
             },
             {
                 "onsails/lspkind.nvim"
-            }
+            },
+            {
+                "lukas-reineke/indent-blankline.nvim",
+                main = "ibl",
+                opts = {}
+            },
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true}
@@ -332,7 +340,6 @@ vim.cmd(
     set shiftwidth=4
     set expandtab
     set list
-    set lcs=tab:\|\-
     set nu
     set nocompatible
     filetype plugin on
@@ -502,3 +509,4 @@ require("cmp").setup(
         }
     }
 )
+require("ibl").setup()
