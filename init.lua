@@ -12,13 +12,6 @@ require("lazy").setup(
     {
         spec = {
             {
-                "yamatsum/nvim-nonicons",
-                dependencies = {"kyazdani42/nvim-web-devicons"}
-            },
-            {
-                "nvimdev/lspsaga.nvim"
-            },
-            {
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
                 opts = {
