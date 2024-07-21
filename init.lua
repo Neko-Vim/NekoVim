@@ -29,14 +29,6 @@ require("lazy").setup(
                 opts = {}
             },
             {
-                "chikko80/error-lens.nvim",
-                event = "BufRead",
-                dependencies = {
-                    "nvim-telescope/telescope.nvim"
-                },
-                opts = {}
-            },
-            {
                 "vhyrro/luarocks.nvim",
                 priority = 1000,
                 config = true
@@ -365,7 +357,6 @@ vim.cmd(
     filetype plugin on
     syntax on
     colorscheme terafox " just there as an example, available themes are below
-    inoremap <silent><expr> + coc#pum#visible() ? coc#pum#confirm() : "\\<CR>"
 ]]
 )
 require("gitsigns").setup()
@@ -472,4 +463,7 @@ require("cmp").setup({
     sources = {
         { name = 'luasnip' },
     },
+    mapping = require("cmp").mapping.preset.insert({
+        ['<CR>'] = require("cmp").mapping.confirm({ select = true }),
+    })
 })
