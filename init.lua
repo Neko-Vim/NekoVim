@@ -210,9 +210,11 @@ require("lazy").setup(
                 "lewis6991/gitsigns.nvim"
             },
             {
-                "akinsho/bufferline.nvim",
-                version = "*",
-                dependencies = "nvim-tree/nvim-web-devicons"
+                'romgrk/barbar.nvim',
+                dependencies = {
+                    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+                    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+                }
             },
             {
                 "nvim-tree/nvim-tree.lua"
@@ -381,6 +383,7 @@ vim.cmd(
     filetype plugin on
     syntax on
     colorscheme kanagawa " just there as an example, available themes are below
+    nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
 ]]
 )
 require("gitsigns").setup()
@@ -465,19 +468,6 @@ require("neocord").setup(
     }
 )
 require("luasnip.loaders.from_vscode").lazy_load()
-require("bufferline").setup {
-    options = {
-        separator_style = "slope",
-        always_show_bufferline = "true",
-        show_close_icon = "true",
-        mode = "buffers",
-        diagnostics = "coc",
-        diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and " " or ""
-            return " " .. icon .. count
-        end
-    }
-}
 require("telescope").setup {
     pickers = {
         colorscheme = {
