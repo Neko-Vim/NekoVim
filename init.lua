@@ -12,7 +12,7 @@ require("lazy").setup(
     {
         spec = {
             {
-                "shaunsingh/solarized.nvim"
+                "maxmx03/solarized.nvim"
             },
             {
                 "embark-theme/vim",
@@ -283,6 +283,9 @@ require("lazy").setup(
                 main = "ibl",
                 opts = {}
             },
+            {
+                "petertriho/nvim-scrollbar"
+            },
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true},
@@ -364,6 +367,7 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 require("mini.map").setup()
+require("scrollbar").setup()
 
 vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
 require("staline").setup(
