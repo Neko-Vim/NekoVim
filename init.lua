@@ -326,7 +326,7 @@ require("which-key").add(
         {"<leader>gC", "<cmd>G checkout<cr>", desc = "Check out origin"},
         {"<leader>gc", "<cmd>w | G commit -a<cr>", desc = "Save and commit"},
         {"<leader>gf", "<cmd>G pull<cr>", desc = "Fetch from origin"},
-        {"<leader>gp", "<cmd>G push<cr>", desc = "Push commits"},
+        {"<leader>gp", "<cmd>G push --force<cr>", desc = "Push commits"},
         {"<leader>gs", "<cmd>G stash<cr>", desc = "Stash"},
         {"<leader>gr", "<cmd>G reset --hard HEAD<cr>", desc = "Reset to last commit (for if you introduced breaking changes)"},
         {"<leader>o", group = "Org mode"},
@@ -335,6 +335,8 @@ require("which-key").add(
         {"<leader>w", group = "VimWiki"},
         {"<leader>x", group = "Trouble"},
         {"<C-a>", "ggVG", desc = "Select all"},
+        {"<C-z>", "u", desc = "Undo"},
+        {"<C-s>", "<cmd>w<cr>", desc = "Save"}
     }
 )
 require("monokai-pro").setup()
