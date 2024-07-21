@@ -12,6 +12,9 @@ require("lazy").setup(
     {
         spec = {
             {
+                "shaunsingh/solarized.nvim"
+            },
+            {
                 "embark-theme/vim",
                 name = "embark"
             },
@@ -286,7 +289,9 @@ require("lazy").setup(
         ui = {border = "rounded"},
     }
 )
-require("mason").setup()
+require("mason").setup({
+    ui = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}}
+})
 require("noice").setup(
     {
         lsp = {
