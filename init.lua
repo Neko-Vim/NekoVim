@@ -303,7 +303,16 @@ require("lazy").setup(
             },
             {
                 "petertriho/nvim-scrollbar"
-            }
+            },
+            {
+                "gregsexton/Atom"
+            },
+            {
+                "ayu-theme/ayu-vim"
+            },
+            {
+                "chase/focuspoint-vim"
+            },
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true},
