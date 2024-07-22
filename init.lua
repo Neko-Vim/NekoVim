@@ -314,6 +314,9 @@ require("lazy").setup(
             {
                 "chase/focuspoint-vim"
             },
+            {
+                "ramojus/mellifluous.nvim"
+            },
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true},
