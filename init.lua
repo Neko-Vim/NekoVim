@@ -317,6 +317,9 @@ require("lazy").setup(
             {
                 "ramojus/mellifluous.nvim"
             },
+            {
+                "shrikecode/kyotonight.vim"
+            },
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true},
@@ -350,7 +353,7 @@ vim.opt.termguicolors = true
 require("which-key").add(
     {
         {"<leader>a", group = "Apps"},
-        {"<leader>aT", "<cmd>Telescope colorscheme<cr>", desc = "Themery"},
+        {"<leader>aT", "<cmd>Telescope colorscheme<cr>", desc = "Themes"},
         {"<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer"},
         {"<leader>ag", "<cmd>Playtime<cr>", desc = "Card games"},
         {"<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim"},
@@ -573,4 +576,3 @@ require("cmp").setup(
     }
 )
 require("ibl").setup()
-
