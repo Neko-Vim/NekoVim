@@ -134,6 +134,7 @@ require("lazy").setup(
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
                         dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>"),
+                        dashboard.button("h", "  > Themes", ":Telescope colorscheme<CR>"),
                         dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
@@ -410,7 +411,10 @@ vim.diagnostic.config(
             numhl = {
                 [vim.diagnostic.severity.WARN] = "WarningMsg"
             }
-        }
+        },
+        virtual_text = {
+            prefix = "⬤"
+        },
     }
 )
 -- optionally enable 24-bit colour
