@@ -12,6 +12,9 @@ require("lazy").setup(
     {
         spec = {
             {
+                "mg979/vim-visual-multi"
+            },
+            {
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
                 opts = {
