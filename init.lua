@@ -16,11 +16,9 @@ require("lazy").setup(
             },
             {
                 "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
+                ft = "lua",
                 opts = {
                     library = {
-                        -- See the configuration section for more details
-                        -- Load luvit types when the `vim.uv` word is found
                         {path = "luvit-meta/library", words = {"vim%.uv"}}
                     }
                 }
@@ -61,7 +59,6 @@ require("lazy").setup(
                 event = "VeryLazy",
                 ft = {"org"},
                 config = function()
-                    -- Setup orgmode
                     require("orgmode").setup(
                         {
                             org_agenda_files = "~/orgfiles/**/*",
@@ -119,7 +116,6 @@ require("lazy").setup(
                     local alpha = require("alpha")
                     local dashboard = require("alpha.themes.dashboard")
 
-                    -- Set header
                     dashboard.section.header.val = {
                         [[ _      _____ _  __ ____  _     _  _      _     _____ ]],
                         [[/ \  /|/  __// |/ //  _ \/ \ |\/ \/ \__/|/ \  __\__  \]],
@@ -128,7 +124,6 @@ require("lazy").setup(
                         [[\_/  \|\____\\_|\_\\____/\__/  \_/\_/  \|(_)  \//____/]]
                     }
 
-                    -- Set menu
                     dashboard.section.buttons.val = {
                         dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
                         dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
@@ -147,10 +142,8 @@ require("lazy").setup(
                         [[      |,4-  ) )-,_. ,\ (  `'-']],
                         [[      '---''(_/--'  `-'\_)]]
                     }
-                    -- Send config to alpha
                     alpha.setup(dashboard.opts)
 
-                    -- Disable folding on alpha buffer
                     vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
                 end
             },
@@ -216,8 +209,8 @@ require("lazy").setup(
             {
                 "romgrk/barbar.nvim",
                 dependencies = {
-                    "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-                    "nvim-tree/nvim-web-devicons" -- OPTIONAL: for file icons
+                    "lewis6991/gitsigns.nvim",
+                    "nvim-tree/nvim-web-devicons"
                 }
             },
             {
@@ -428,10 +421,8 @@ vim.diagnostic.config(
         },
     }
 )
--- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- empty setup using defaults
 require("nvim-tree").setup()
 require("mini.map").setup()
 require("scrollbar").setup()
