@@ -376,7 +376,8 @@ require("which-key").add(
         {"<C-a>", "ggVG", desc = "Select all"},
         {"<C-z>", "u", desc = "Undo"},
         {"<C-s>", "<cmd>w<cr>", desc = "Save"},
-        {"<C-x>", "<cmd>BufferClose<cr>", desc = "Close tab"}
+        {"<C-x>", "<cmd>BufferClose<cr>", desc = "Close tab"},
+        {"<leader>c", "<cmd>e $MYVIMRC<cr>", desc = "Config"}
     }
 )
 require("monokai-pro").setup()
