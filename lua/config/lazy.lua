@@ -96,6 +96,7 @@ require("nvim-web-devicons").setup()
 require("nvim-web-devicons").get_icons()
 vim.cmd(
     [[
+    autocmd VimEnter * DistroUpdate
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
