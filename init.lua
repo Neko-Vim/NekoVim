@@ -402,7 +402,6 @@ require("nvim-web-devicons").get_icons()
 require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
-    autocmd StdinReadPre * let s:std_in=1
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
