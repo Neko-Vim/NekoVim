@@ -390,7 +390,6 @@ require("which-key").add(
 require("monokai-pro").setup()
 require("nvim-web-devicons").setup()
 require("nvim-web-devicons").get_icons()
-require("luasnip.loaders.from_vscode").lazy_load()
 vim.cmd(
     [[
     filetype plugin indent on
