@@ -99,8 +99,8 @@ return {
             local dashboard = require("alpha.themes.dashboard")
 
             dashboard.section.header.val = {
-[[    ┓     •      ┏┓]],
-[[┏┓┏┓┃┏┏┓┓┏┓┏┳┓  • ┫]],
+[[    ┓     •     •┏┓]],
+[[┏┓┏┓┃┏┏┓┓┏┓┏┳┓    ┫]],
 [[┛┗┗ ┛┗┗┛┗┛┗┛┗┗  •┗┛]],
             }
 
@@ -116,12 +116,11 @@ return {
                 dashboard.button("q", "  > Quit", ":qa<CR>")
             }
 
-            dashboard.section.footer.val = {
-                [[       |\      _,,,---,,_]],
-                [[ZZZzz /,`.-'`'    -.  ;-;;,_]],
-                [[      |,4-  ) )-,_. ,\ (  `'-']],
-                [[      '---''(_/--'  `-'\_)]]
-            }
+            dashboard.section.footer.val = function()
+            local stats = require("lazy").stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          end,
             alpha.setup(dashboard.opts)
 
             vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
@@ -141,9 +140,6 @@ return {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify"
         }
-    },
-    {
-        "nvim-treesitter/nvim-treesitter"
     },
     {
         "VonHeikemen/lsp-zero.nvim",
