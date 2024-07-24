@@ -37,11 +37,6 @@ return {
         opts = {}
     },
     {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true
-    },
-    {
         "nvim-orgmode/orgmode",
         event = "VeryLazy",
         ft = {"org"},
