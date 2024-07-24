@@ -54,15 +54,6 @@ require("lazy").setup(
                 config = true
             },
             {
-                "nvim-neorg/neorg",
-                lazy = false,
-                version = "*",
-                config = true,
-                dependencies = {
-		            "nvim-neorg/neorg-telescope"
-		        },
-            },
-            {
                 "nvim-orgmode/orgmode",
                 event = "VeryLazy",
                 ft = {"org"},
