@@ -12,6 +12,11 @@ require("lazy").setup(
     {
         spec = {
             {
+                "windwp/nvim-autopairs",
+                event = "InsertEnter",
+                config = true
+            },
+            {
                 "mg979/vim-visual-multi"
             },
             {
@@ -52,7 +57,10 @@ require("lazy").setup(
                 "nvim-neorg/neorg",
                 lazy = false,
                 version = "*",
-                config = true
+                config = true,
+                dependencies = {
+		    "nvim-neorg/neorg-telescope"
+		},
             },
             {
                 "nvim-orgmode/orgmode",
@@ -132,7 +140,7 @@ require("lazy").setup(
                         dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                         dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
                         dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>"),
-                        dashboard.button("h", "  > Themes", ":Telescope colorscheme<CR>"),
+                        dashboard.button("T", "  > Themes", ":Telescope colorscheme<CR>"),
                         dashboard.button("q", "  > Quit", ":qa<CR>")
                     }
 
@@ -316,6 +324,14 @@ require("lazy").setup(
             {
                 "shrikecode/kyotonight.vim"
             },
+            {
+                "Zeioth/distroupgrade.nvim",
+                dependencies = "nvim-lua/plenary.nvim",
+                event = "VeryLazy",
+                opts = {
+                    channel = "main"
+                }
+            },
         },
         install = {colorscheme = {"terafox"}},
         checker = {enabled = true},
@@ -369,7 +385,7 @@ require("which-key").add(
             desc = "Reset to last commit (for if you introduced breaking changes)"
         },
         {"<leader>o", group = "Org mode"},
-        {"<leader>r", "<cmd>term<cr>browser-sync start -f -s<cr>", desc = "Run JS in browser"},
+        {"<leader>r", "<cmd>term<cr>ibrowser-sync start -f -s<cr>", desc = "Run JS in browser"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
         {"<leader>w", group = "VimWiki"},
         {"<leader>x", group = "Trouble"},
@@ -396,7 +412,7 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
-    colorscheme kanagawa " just there as an example, available themes are below
+    colorscheme embark " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
 ]]
 )
@@ -436,8 +452,8 @@ require("staline").setup(
             right_separator = ""
         },
         lsp_symbols = {
-            Error = "",
-            Info = ""
+            Error = "󰅚",
+            Info = "",
         },
         sections = {
             left = {
