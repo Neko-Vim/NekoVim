@@ -59,8 +59,8 @@ require("lazy").setup(
                 version = "*",
                 config = true,
                 dependencies = {
-		    "nvim-neorg/neorg-telescope"
-		},
+		            "nvim-neorg/neorg-telescope"
+		        },
             },
             {
                 "nvim-orgmode/orgmode",
@@ -327,7 +327,7 @@ require("lazy").setup(
             {
                 "Zeioth/distroupgrade.nvim",
                 dependencies = "nvim-lua/plenary.nvim",
-                event = "VeryLazy",
+                event = "VimEnter",
                 opts = {
                     channel = "main"
                 }
