@@ -292,12 +292,4 @@ return {
     {
         "shrikecode/kyotonight.vim"
     },
-    {
-        "Zeioth/distroupgrade.nvim",
-        dependencies = "nvim-lua/plenary.nvim",
-        event = "VimEnter",
-        opts = {
-            channel = "main"
-        }
-    }
 }

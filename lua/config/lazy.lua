@@ -96,7 +96,6 @@ require("nvim-web-devicons").setup()
 require("nvim-web-devicons").get_icons()
 vim.cmd(
     [[
-    autocmd VimEnter * DistroUpdate
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
@@ -106,7 +105,7 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
-    colorscheme embark " just there as an example, available themes are below
+    colorscheme carbonfox " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
 ]]
 )
