@@ -105,7 +105,7 @@ vim.cmd(
     set nocompatible
     filetype plugin on
     syntax on
-    colorscheme carbonfox " just there as an example, available themes are below
+    colorscheme kanagawa " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
 ]]
 )

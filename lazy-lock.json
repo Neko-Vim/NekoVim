@@ -9,7 +9,6 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conform.nvim": { "branch": "master", "commit": "25d48271e3d4404ba017cb92a37d3a681c1ad149" },
-  "distroupgrade.nvim": { "branch": "main", "commit": "054bcea8791e2a9e09f0eeb403cd87f3d53e92f2" },
   "dracula.nvim": { "branch": "main", "commit": "fdf503e52ec1c8aae07353604d891fe5a3ed5201" },
   "embark": { "branch": "main", "commit": "dcc90e04ac9c9392bf32c1e5f701353d8c5290c7" },
   "flesh-and-blood": { "branch": "master", "commit": "97edfd1b1a942f56723862c95fcc5971d44d2bb5" },
