@@ -4,6 +4,7 @@ Clone this repository in either %localappdata%\nvim (Win32) or ~/.config/nvim (U
 ## Features
 * Mason
 * Lazy
+* Fast as FUCK
 * Tabs
 * Sexy status line
 * Notifications and separate command line so you don't strain your neck by looking down
