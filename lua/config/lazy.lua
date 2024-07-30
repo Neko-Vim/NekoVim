@@ -19,19 +19,17 @@ vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
   spec = {
-    -- import/override with your plugins
     { import = "plugins" },
   },
   defaults = {
     lazy = false,
     version = false,
-    -- version = "*",
   },
   install = { colorscheme = { "default" } },
   checker = {
     enabled = true,
-    notify = false, -- notify on update
-  }, -- automatically check for plugin updates
+    notify = false,
+  },
 })
 require("mason").setup(
     {
@@ -107,6 +105,7 @@ vim.cmd(
     syntax on
     colorscheme kanagawa " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
+    autocmd BufWritePre * lua require("conform").format({ bufnr = args.buf })
 ]]
 )
 require("gitsigns").setup()
@@ -132,7 +131,12 @@ vim.diagnostic.config(
     }
 )
 vim.opt.termguicolors = true
-
+require("conform").setup({
+    formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = {"prettier"},
+    },
+})
 require("nvim-tree").setup()
 require("mini.map").setup()
 require("scrollbar").setup()

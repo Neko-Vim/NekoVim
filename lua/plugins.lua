@@ -117,13 +117,17 @@ return {
             }
 
             dashboard.section.footer.val = function()
-            local stats = require("lazy").stats()
-            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
-          end,
+                local stats = require("lazy").stats()
+                local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                return {
+                    [[       |\      _,,,---,,_]],
+                    [[ZZZzz /,`.-'`'    -.  ;-;;,_]],
+                    [[      |,4-  ) )-,_. ,\ (  `'-']],
+                    [[      '---''(_/--'  `-'\_)]],
+                    "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
+                }
+            end,
             alpha.setup(dashboard.opts)
-
-            vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
         end
     },
     {
@@ -156,6 +160,9 @@ return {
     },
     {
         "hrsh7th/nvim-cmp"
+    },
+    {
+        "stevearc/dressing.nvim"
     },
     {
         "L3MON4D3/LuaSnip",

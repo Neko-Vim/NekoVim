@@ -10,6 +10,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conform.nvim": { "branch": "master", "commit": "25d48271e3d4404ba017cb92a37d3a681c1ad149" },
   "dracula.nvim": { "branch": "main", "commit": "fdf503e52ec1c8aae07353604d891fe5a3ed5201" },
+  "dressing.nvim": { "branch": "master", "commit": "6741f1062d3dc6e4755367a7e9b347b553623f04" },
   "embark": { "branch": "main", "commit": "dcc90e04ac9c9392bf32c1e5f701353d8c5290c7" },
   "flesh-and-blood": { "branch": "master", "commit": "97edfd1b1a942f56723862c95fcc5971d44d2bb5" },
   "focuspoint-vim": { "branch": "master", "commit": "72b6634d234c75b1213dd7b379b6405621a83a01" },
