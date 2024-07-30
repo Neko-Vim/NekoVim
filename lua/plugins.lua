@@ -1,6 +1,9 @@
 return {
     {
-        "folke/drop.nvim"
+        "folke/drop.nvim",
+        opts = {
+            theme = "zodiac"
+        }
     },
     {
         "windwp/nvim-autopairs",
