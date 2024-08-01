@@ -1,5 +1,8 @@
 return {
     {
+        "mhartington/formatter.nvim" 
+    },
+    {
         "folke/drop.nvim",
         opts = {
             theme = "zodiac"
@@ -32,9 +35,6 @@ return {
     {
         "embark-theme/vim",
         name = "embark"
-    },
-    {
-        "stevearc/conform.nvim"
     },
     {
         "folke/tokyonight.nvim",

@@ -119,8 +119,7 @@ require("which-key").add(
 require("monokai-pro").setup()
 require("nvim-web-devicons").setup()
 require("nvim-web-devicons").get_icons()
-vim.cmd(
-    [[
+vim.cmd([[
     filetype plugin indent on
     set tabstop=4
     set shiftwidth=4
@@ -132,9 +131,8 @@ vim.cmd(
     syntax on
     colorscheme kanagawa " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
-    autocmd BufWritePre * lua require("conform").format({ bufnr = args.buf })
-]]
-)
+    autocmd BufWritePost * FormatWrite
+]])
 require("gitsigns").setup()
 vim.diagnostic.config(
     {
@@ -158,16 +156,9 @@ vim.diagnostic.config(
     }
 )
 vim.opt.termguicolors = true
-require("conform").setup({
-    formatters_by_ft = {
-        lua = { "stylua" },
-        javascript = {"prettier"},
-    },
-})
 require("nvim-tree").setup()
 require("mini.map").setup()
 require("scrollbar").setup()
-
 vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
 require("staline").setup(
     {
