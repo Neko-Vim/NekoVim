@@ -101,7 +101,6 @@ return {
     {
         "goolord/alpha-nvim",
         config = function()
-            local alpha = require("alpha")
             local dashboard = require("alpha.themes.dashboard")
 
             dashboard.section.header.val = {
@@ -132,8 +131,8 @@ return {
                     [[      '---''(_/--'  `-'\_)]],
                     "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
                 }
-            end,
-            alpha.setup(dashboard.opts)
+            end
+            require("alpha").setup(dashboard.opts)
         end
     },
     {
@@ -165,7 +164,14 @@ return {
         "hrsh7th/cmp-nvim-lsp"
     },
     {
-        "hrsh7th/nvim-cmp"
+        "hrsh7th/nvim-cmp",
+        opts = function(_, opts)
+            opts.sources = opts.sources or {}
+            table.insert(opts.sources, {
+                name = "lazydev",
+                group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        })
+        end
     },
     {
         "stevearc/dressing.nvim"
