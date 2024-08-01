@@ -1,3 +1,4 @@
+vim.api.nvim_set_option("clipboard","unnamed")
 local function getGreeting()
   local tableTime = os.date("*t")
   local hour = tableTime.hour
