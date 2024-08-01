@@ -104,9 +104,9 @@ return {
             local dashboard = require("alpha.themes.dashboard")
 
             dashboard.section.header.val = {
-[[    ┓     •     •┏┓]],
-[[┏┓┏┓┃┏┏┓┓┏┓┏┳┓    ┫]],
-[[┛┗┗ ┛┗┗┛┗┛┗┛┗┗  •┗┛]],
+                [[    ┓     •     •┏┓]],
+                [[┏┓┏┓┃┏┏┓┓┏┓┏┳┓    ┫]],
+                [[┛┗┗ ┛┗┗┛┗┛┗┛┗┗  •┗┛]],
             }
 
             dashboard.section.buttons.val = {
@@ -129,7 +129,7 @@ return {
                     [[ZZZzz /,`.-'`'    -.  ;-;;,_]],
                     [[      |,4-  ) )-,_. ,\ (  `'-']],
                     [[      '---''(_/--'  `-'\_)]],
-                    "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
+                    "Nekovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
                 }
             end
             require("alpha").setup(dashboard.opts)
