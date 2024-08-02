@@ -1,5 +1,8 @@
 return {
     {
+        "kyoh86/momiji"
+    },
+    {
         "mhartington/formatter.nvim" 
     },
     {
