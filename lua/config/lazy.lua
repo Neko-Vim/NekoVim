@@ -1,4 +1,3 @@
-vim.api.nvim_set_option("clipboard","unnamed")
 local function getGreeting()
   local tableTime = os.date("*t")
   local hour = tableTime.hour
@@ -132,6 +131,7 @@ vim.cmd([[
     colorscheme kanagawa " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
     autocmd BufWritePost * FormatWrite
+    set clipboard=unnamedplus
 ]])
 require("gitsigns").setup()
 vim.diagnostic.config(
