@@ -1,9 +1,23 @@
 return {
     {
+        "vague2k/huez.nvim",
+        branch = "stable",
+        event = "UIEnter",
+        config = function()
+            require("huez").setup({})
+        end,
+    },
+    {
         "kyoh86/momiji"
     },
     {
-        "mhartington/formatter.nvim" 
+        "sainnhe/sonokai"
+    },
+    {
+        "b0o/incline.nvim"
+    },
+    {
+        "mhartington/formatter.nvim"
     },
     {
         "folke/drop.nvim",
@@ -15,6 +29,10 @@ return {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = true
+    },
+    {
+        "SmiteshP/nvim-navic",
+        dependencies = "neovim/nvim-lspconfig"
     },
     {
         "mg979/vim-visual-multi"

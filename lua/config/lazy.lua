@@ -45,6 +45,7 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         { import = "plugins" },
+        { import = "huez-manager.import"}
     },
     defaults = {
         lazy = false,
@@ -62,6 +63,40 @@ require("mason").setup(
         ui = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}}
     }
 )
+local helpers = require 'incline.helpers'
+local navic = require 'nvim-navic'
+local devicons = require 'nvim-web-devicons'
+require('incline').setup {
+  window = {
+    padding = 0,
+    margin = { horizontal = 0, vertical = 0 },
+  },
+  render = function(props)
+    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+    if filename == '' then
+      filename = '[No Name]'
+    end
+    local ft_icon, ft_color = devicons.get_icon_color(filename)
+    local modified = vim.bo[props.buf].modified
+    local res = {
+      ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+      ' ',
+      { filename, gui = modified and 'bold,italic' or 'bold' },
+      guibg = '#44406e',
+    }
+    if props.focused then
+      for _, item in ipairs(navic.get_data(props.buf) or {}) do
+        table.insert(res, {
+          { ' > ', group = 'NavicSeparator' },
+          { item.icon, group = 'NavicIcons' .. item.type },
+          { item.name, group = 'NavicText' },
+        })
+      end
+    end
+    table.insert(res, ' ')
+    return res
+  end,
+}
 require("noice").setup(
     {
         lsp = {
@@ -84,13 +119,14 @@ vim.opt.termguicolors = true
 require("which-key").add(
     {
         {"<leader>a", group = "Apps"},
-        {"<leader>aT", "<cmd>Telescope colorscheme<cr>", desc = "Themes"},
+        {"<leader>aT", "<cmd>Huez<cr>", desc = "Themes"},
         {"<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer"},
         {"<leader>ag", "<cmd>Playtime<cr>", desc = "Card games"},
         {"<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim"},
         {"<leader>am", "<cmd>Mason<cr>", desc = "Mason.nvim"},
         {"<leader>as", "<cmd>Alpha<cr>", desc = "Start screen"},
         {"<leader>at", "<cmd>Tetris<cr>", desc = "Tetris"},
+        {"<leader>ai", "<cmd>HuezLive<cr>", desc = "Install themes"},
         {"<leader>c", group = "Trouble misc."},
         {"<leader>g", group = "Git"},
         {"<leader>gC", "<cmd>G checkout<cr>", desc = "Check out origin"},
@@ -124,7 +160,7 @@ vim.cmd([[
     set shiftwidth=4
     set expandtab
     set list
-    set nu
+    set nu rnu
     set nocompatible
     filetype plugin on
     syntax on
