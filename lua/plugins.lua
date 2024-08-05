@@ -8,6 +8,9 @@ return {
         end,
     },
     {
+        "voldikss/vim-floaterm"
+    },
+    {
         "kyoh86/momiji"
     },
     {
@@ -165,7 +168,6 @@ return {
     },
     {
         "folke/noice.nvim",
-        event = "VeryLazy",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify"
