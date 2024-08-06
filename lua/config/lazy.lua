@@ -45,7 +45,6 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         { import = "plugins" },
-        { import = "huez-manager.import"}
     },
     defaults = {
         lazy = false,

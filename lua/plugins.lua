@@ -1,11 +1,9 @@
 return {
     {
-        "vague2k/huez.nvim",
-        branch = "stable",
-        event = "UIEnter",
-        config = function()
-            require("huez").setup({})
-        end,
+        "sho-87/kanagawa-paper.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
     },
     {
         "voldikss/vim-floaterm"
