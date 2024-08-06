@@ -133,6 +133,7 @@ require("which-key").add(
         {"<leader>gf", "<cmd>G pull<cr>", desc = "Fetch from origin"},
         {"<leader>gp", "<cmd>G push --force<cr>", desc = "Push commits"},
         {"<leader>gs", "<cmd>G stash<cr>", desc = "Stash"},
+        {"<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit"},
         {
             "<leader>gr",
             "<cmd>G reset --hard HEAD<cr>",

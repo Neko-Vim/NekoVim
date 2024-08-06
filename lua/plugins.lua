@@ -9,6 +9,18 @@ return {
         "voldikss/vim-floaterm"
     },
     {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = true
+    },
+    {
+        "patstockwell/vim-monokai-tasty",
+        lazy = false,
+        priority = 100000
+    },
+    {
         "kyoh86/momiji"
     },
     {
