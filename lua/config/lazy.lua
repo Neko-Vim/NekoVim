@@ -125,7 +125,6 @@ require("which-key").add(
         {"<leader>am", "<cmd>Mason<cr>", desc = "Mason.nvim"},
         {"<leader>as", "<cmd>Alpha<cr>", desc = "Start screen"},
         {"<leader>at", "<cmd>Tetris<cr>", desc = "Tetris"},
-        {"<leader>ai", "<cmd>HuezLive<cr>", desc = "Install themes"},
         {"<leader>c", group = "Trouble misc."},
         {"<leader>g", "<cmd>Neogit<cr>", desc = "Neogit"},
         {
@@ -142,7 +141,7 @@ require("which-key").add(
         {"<C-z>", "u", desc = "Undo"},
         {"<C-s>", "<cmd>w<cr>", desc = "Save"},
         {"<C-x>", "<cmd>BufferClose<cr>", desc = "Close tab"},
-        {"<leader>c", "<cmd>e $MYVIMRC<cr>", desc = "Config"}
+        {"<leader>s", "<cmd>lua require('telescope.builtin').find_files({cwd = vim.fn.stdpath('config')})<cr>", desc = "Config"}
     }
 )
 require("monokai-pro").setup()
