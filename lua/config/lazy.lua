@@ -118,7 +118,7 @@ vim.opt.termguicolors = true
 require("which-key").add(
     {
         {"<leader>a", group = "Apps"},
-        {"<leader>aT", "<cmd>Huez<cr>", desc = "Themes"},
+        {"<leader>aT", "<cmd>Telescope colorscheme<cr>", desc = "Themes"},
         {"<leader>af", "<cmd>NvimTreeOpen<cr>", desc = "Open file explorer"},
         {"<leader>ag", "<cmd>Playtime<cr>", desc = "Card games"},
         {"<leader>al", "<cmd>Lazy<cr>", desc = "Lazy.nvim"},
