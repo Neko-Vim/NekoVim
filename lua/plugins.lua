@@ -137,7 +137,7 @@ return {
                 dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
                 dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
                 dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-                dashboard.button("s", "  > Settings", ":e $MYVIMRC<CR>"),
+                dashboard.button("s", "  > Settings", ":lua require('telescope.builtin').find_files({cwd = vim.fn.stdpath('config')})<CR>"),
                 dashboard.button("l", "󰒲  > Lazy.nvim", ":Lazy <CR>"),
                 dashboard.button("m", "󰣪  > Mason.nvim", ":Mason <CR>"),
                 dashboard.button("t", "⡴  > Tetris", ":Tetris<CR>"),
