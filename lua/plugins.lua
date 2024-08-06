@@ -229,9 +229,6 @@ return {
         version = "*"
     },
     {
-        "tpope/vim-fugitive"
-    },
-    {
         "lewis6991/gitsigns.nvim"
     },
     {
@@ -278,22 +275,6 @@ return {
     },
     {
         "rktjmp/playtime.nvim"
-    },
-    {
-        "kdheepak/lazygit.nvim",
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile"
-        },
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-        keys = {
-            {"<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit"}
-        }
     },
     {
         "sainttttt/flesh-and-blood"
