@@ -334,4 +334,7 @@ return {
     {
         "shrikecode/kyotonight.vim"
     },
+    {
+        "nvim-treesitter/nvim-treesitter"
+    },
 }

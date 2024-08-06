@@ -32,7 +32,7 @@
   "focuspoint-vim": { "branch": "master", "commit": "72b6634d234c75b1213dd7b379b6405621a83a01" },
   "formatter.nvim": { "branch": "master", "commit": "ad246d34ce7a32f752071ed81b09b94e6b127fad" },
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
-  "github-nvim-theme": { "branch": "main", "commit": "8db454eb272eabb349209ec62ceb63b8eea5f011" },
+  "github-nvim-theme": { "branch": "main", "commit": "6025b6309f723cc13b02e20ea8a5d4f6e6ab2e33" },
   "gitsigns.nvim": { "branch": "main", "commit": "58bd9e98d8e3c5a1c98af312e85247ee1afd3ed2" },
   "gruvbox-baby": { "branch": "main", "commit": "bd52e62d8134647090108189e69c8b3cd18bdbbf" },
   "gruvbox-material": { "branch": "master", "commit": "91f8170a31ae6e31670629cd339df297dbd5fd5f" },
