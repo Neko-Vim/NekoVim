@@ -46,6 +46,9 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
     },
+    news = {
+        neovim = true,
+    },
     defaults = {
         lazy = false,
         version = false,
