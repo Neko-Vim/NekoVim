@@ -6,6 +6,14 @@ return {
         opts = {},
     },
     {
+        "sontungexpt/witch",
+        priority = 1000,
+        lazy = false,
+        config = function(_, opts)
+            require("witch").setup(opts)
+        end,
+    },
+    {
         "OXY2DEV/markview.nvim",
         lazy = false,
         dependencies = {
@@ -190,6 +198,40 @@ return {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify"
         }
+    },
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        opts = {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/notes",
+                        },
+                        default_workspace = "notes",
+                    },
+                },
+            },
+        },
+        dependencies = {
+            { "nvim-lua/plenary.nvim", },
+            {
+                "nvim-treesitter/nvim-treesitter",
+                opts = {
+                    auto_install = true,
+                    highlight = {
+                        enable = true,
+                        additional_vim_regex_highlighting = false,
+                    },
+                },
+                config = function(_,opts)
+                    require('nvim-treesitter.configs').setup(opts)
+                end
+            },
+        },
     },
     {
         "VonHeikemen/lsp-zero.nvim",

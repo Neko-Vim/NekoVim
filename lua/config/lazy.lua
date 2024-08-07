@@ -331,3 +331,8 @@ require("cmp").setup(
     }
 )
 require("ibl").setup()
+require 'nvim-treesitter.configs'.setup {
+	highlight = {
+		enable = true,
+	}
+}
