@@ -163,7 +163,6 @@ vim.cmd([[
     colorscheme kanagawa " just there as an example, available themes are below
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
     autocmd BufWritePost * FormatWrite
-    autocmd BufEnter *.norg set ft=norg
     set clipboard=unnamedplus
 ]])
 require("gitsigns").setup()

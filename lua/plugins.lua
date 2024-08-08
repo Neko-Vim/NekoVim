@@ -378,7 +378,4 @@ return {
     {
         "nvim-treesitter/nvim-treesitter"
     },
-    {
-        "sheerun/vim-polyglot"
-    }
 }
