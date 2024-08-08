@@ -317,9 +317,6 @@ return {
         "sainnhe/gruvbox-material"
     },
     {
-        "vimwiki/vimwiki"
-    },
-    {
         "Neko-Vim/NekoVimRPC",
         event = "VeryLazy"
     },
