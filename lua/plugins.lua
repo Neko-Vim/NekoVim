@@ -6,6 +6,11 @@ return {
         opts = {},
     },
     {
+        'AlexvZyl/nordic.nvim',
+        lazy = false,
+        priority = 1000,
+    },
+    {
         "AckslD/nvim-neoclip.lua"
     },
     {
