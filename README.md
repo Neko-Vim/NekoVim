@@ -9,7 +9,6 @@ Clone this repository in either %localappdata%\nvim (Win32) or ~/.config/nvim (U
 * Sexy status line
 * Notifications and separate command line so you don't strain your neck by looking down
 * Start screen
-* All one file
 * File explorer
 * Code completion
 * Code *snippets*

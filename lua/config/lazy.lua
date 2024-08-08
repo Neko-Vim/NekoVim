@@ -136,14 +136,14 @@ require("which-key").add(
             desc = "Reset to last commit (for if you introduced breaking changes)"
         },
         {"<leader>o", group = "Org mode"},
-        {"<leader>r", "<cmd>term<cr>ibrowser-sync start -f -s<cr>", desc = "Run JS in browser"},
+        {"<leader>r", "<cmd>Telescope oldfiles<cr>", desc = "Recent files"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
-        {"<leader>w", group = "VimWiki"},
         {"<leader>x", group = "Trouble"},
         {"<C-a>", "ggVG", desc = "Select all"},
         {"<C-z>", "u", desc = "Undo"},
         {"<C-s>", "<cmd>w<cr>", desc = "Save"},
         {"<C-x>", "<cmd>BufferClose<cr>", desc = "Close tab"},
+        {"<C-c>", "y", desc = "Copy"},
         {"<leader>s", "<cmd>lua require('telescope.builtin').find_files({cwd = vim.fn.stdpath('config')})<cr>", desc = "Config"}
     }
 )

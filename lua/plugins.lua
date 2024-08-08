@@ -6,6 +6,9 @@ return {
         opts = {},
     },
     {
+        "AckslD/nvim-neoclip.lua"
+    },
+    {
         "sontungexpt/witch",
         priority = 1000,
         lazy = false,
