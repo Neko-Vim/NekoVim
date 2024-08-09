@@ -180,7 +180,6 @@ vim.cmd([[
     nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
     autocmd BufWritePost * FormatWrite
     set clipboard=unnamedplus
-    !git pull
 ]])
 require("gitsigns").setup()
 vim.diagnostic.config(
