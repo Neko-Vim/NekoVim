@@ -11,6 +11,9 @@ return {
         priority = 1000,
     },
     {
+        "arturgoms/moonbow.nvim"
+    },
+    {
         "AckslD/nvim-neoclip.lua"
     },
     {
@@ -369,7 +372,7 @@ return {
         "gregsexton/Atom"
     },
     {
-        "ayu-theme/ayu-vim"
+        "Shatur/neovim-ayu"
     },
     {
         "chase/focuspoint-vim"
