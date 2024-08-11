@@ -6,6 +6,10 @@ return {
         opts = {},
     },
     {
+        "r-cha/encourage.nvim",
+        config = true
+    },
+    {
         "comfysage/evergarden"
     },
     {

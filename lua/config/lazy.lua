@@ -1,26 +1,26 @@
 local function getGreeting()
-  local tableTime = os.date("*t")
-  local hour = tableTime.hour
-  local greetingsTable = {
-    [1] = "  Sleep well!",
-    [2] = "  Good morning!",
-    [3] = "  Good afternoon!",
-    [4] = "  Good evening!",
-    [5] = "  Good night!"
-  }
-  local greetingIndex = 0
-  if hour == 23 or hour < 7 then
-    greetingIndex = 1
-  elseif hour < 12 then
-    greetingIndex = 2
-  elseif hour >= 12 and hour < 18 then
-    greetingIndex = 3
-  elseif hour >= 18 and hour < 21 then
-    greetingIndex = 4
-  elseif hour >= 21 then
-    greetingIndex = 5
-  end
-  return greetingsTable[greetingIndex]
+    local tableTime = os.date("*t")
+    local hour = tableTime.hour
+    local greetingsTable = {
+        [1] = "  Sleep well!",
+        [2] = "  Good morning!",
+        [3] = "  Good afternoon!",
+        [4] = "  Good evening!",
+        [5] = "  Good night!"
+    }
+    local greetingIndex = 0
+    if hour == 23 or hour < 7 then
+        greetingIndex = 1
+    elseif hour < 12 then
+        greetingIndex = 2
+    elseif hour >= 12 and hour < 18 then
+        greetingIndex = 3
+    elseif hour >= 18 and hour < 21 then
+        greetingIndex = 4
+    elseif hour >= 21 then
+        greetingIndex = 5
+    end
+    return greetingsTable[greetingIndex]
 end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
