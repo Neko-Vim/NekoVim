@@ -6,6 +6,9 @@ return {
         opts = {},
     },
     {
+        "comfysage/evergarden"
+    },
+    {
         'AlexvZyl/nordic.nvim',
         lazy = false,
         priority = 1000,
