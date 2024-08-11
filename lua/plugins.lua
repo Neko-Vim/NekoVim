@@ -64,9 +64,6 @@ return {
         "sainnhe/sonokai"
     },
     {
-        "b0o/incline.nvim"
-    },
-    {
         "mhartington/formatter.nvim"
     },
     {
@@ -325,7 +322,7 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     {
-        "tamton-aquib/staline.nvim"
+        "strash/everybody-wants-that-line.nvim"
     },
     {
         "alec-gibson/nvim-tetris"
