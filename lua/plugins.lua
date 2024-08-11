@@ -9,6 +9,9 @@ return {
         "comfysage/evergarden"
     },
     {
+        "sainnhe/everforest"
+    },
+    {
         'AlexvZyl/nordic.nvim',
         lazy = false,
         priority = 1000,
