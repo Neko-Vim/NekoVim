@@ -6,8 +6,14 @@ return {
         opts = {},
     },
     {
+        "nanotee/zoxide.vim"
+    },
+    {
         "r-cha/encourage.nvim",
         config = true
+    },
+    {
+        "dhruvasagar/vim-table-mode"
     },
     {
         "comfysage/evergarden"
@@ -164,7 +170,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.8",
-        dependencies = {"nvim-lua/plenary.nvim"}
+        dependencies = {"nvim-lua/plenary.nvim", "jvgrootveld/telescope-zoxide"}
     },
     {
         "goolord/alpha-nvim",
