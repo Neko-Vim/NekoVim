@@ -248,7 +248,8 @@ require("cmp").setup(
         },
         sources = {
             {name = "luasnip"},
-            {name = "nvim_lsp"}
+            {name = "nvim_lsp"},
+            {name = "cmdline"},
         },
         mapping = require("cmp").mapping.preset.insert(
             {
