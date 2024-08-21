@@ -6,7 +6,23 @@ return {
         opts = {},
     },
     {
+        "nanotee/zoxide.vim"
+    },
+    {
+        "LunarVim/lunar.nvim"
+    },
+    {
+        "r-cha/encourage.nvim",
+        config = true
+    },
+    {
+        "dhruvasagar/vim-table-mode"
+    },
+    {
         "comfysage/evergarden"
+    },
+    {
+        "sainnhe/everforest"
     },
     {
         'AlexvZyl/nordic.nvim',
@@ -55,9 +71,6 @@ return {
     },
     {
         "sainnhe/sonokai"
-    },
-    {
-        "b0o/incline.nvim"
     },
     {
         "mhartington/formatter.nvim"
@@ -160,7 +173,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.8",
-        dependencies = {"nvim-lua/plenary.nvim"}
+        dependencies = {"nvim-lua/plenary.nvim", "jvgrootveld/telescope-zoxide"}
     },
     {
         "goolord/alpha-nvim",
@@ -261,6 +274,9 @@ return {
         "hrsh7th/cmp-nvim-lsp"
     },
     {
+        "hrsh7th/cmp-cmdline"
+    },
+    {
         "hrsh7th/nvim-cmp",
         opts = function(_, opts)
             opts.sources = opts.sources or {}
@@ -318,7 +334,7 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     {
-        "tamton-aquib/staline.nvim"
+        "strash/everybody-wants-that-line.nvim"
     },
     {
         "alec-gibson/nvim-tetris"
