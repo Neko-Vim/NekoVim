@@ -9,6 +9,9 @@ return {
         "nanotee/zoxide.vim"
     },
     {
+        "LunarVim/lunar.nvim"
+    },
+    {
         "r-cha/encourage.nvim",
         config = true
     },
