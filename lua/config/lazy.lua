@@ -250,6 +250,7 @@ require("cmp").setup(
             {name = "luasnip"},
             {name = "nvim_lsp"},
             {name = "cmdline"},
+            {name = "html-css"}
         },
         mapping = require("cmp").mapping.preset.insert(
             {

@@ -405,4 +405,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter"
     },
+    {
+        "Jezda1337/nvim-html-css"
+    }
 }
