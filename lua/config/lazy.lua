@@ -1,27 +1,3 @@
-local function getGreeting()
-    local tableTime = os.date("*t")
-    local hour = tableTime.hour
-    local greetingsTable = {
-        [1] = "  Sleep well!",
-        [2] = "  Good morning!",
-        [3] = "  Good afternoon!",
-        [4] = "  Good evening!",
-        [5] = "  Good night!"
-    }
-    local greetingIndex = 0
-    if hour == 23 or hour < 7 then
-        greetingIndex = 1
-    elseif hour < 12 then
-        greetingIndex = 2
-    elseif hour >= 12 and hour < 18 then
-        greetingIndex = 3
-    elseif hour >= 18 and hour < 21 then
-        greetingIndex = 4
-    elseif hour >= 21 then
-        greetingIndex = 5
-    end
-    return greetingsTable[greetingIndex]
-end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -75,30 +51,62 @@ require("rose-pine").setup({
         TelescopePromptBorder = { fg = "surface", bg = "surface" },
     },
 })
-vim.notify = require("notify")(getGreeting(), "info", {title = "Greetings", stages = "slide", render = "minimal"})
 require("mason").setup(
     {
         ui = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}}
     }
 )
-require("noice").setup(
-    {
-        lsp = {
-            override = {
-                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                ["vim.lsp.util.stylize_markdown"] = true,
-                ["cmp.entry.get_documentation"] = true
-            }
+require("noice").setup({
+    lsp = {
+        override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
         },
-        presets = {
-            bottom_search = true,
-            command_palette = true,
-            long_message_to_split = true,
-            inc_rename = false,
-            lsp_doc_border = false
-        }
-    }
-)
+    },
+    presets = {
+        bottom_search = true, -- ensures search input appears at the bottom
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = false,
+    },
+    messages = {
+        view = "mini", -- view for regular messages
+        view_warn = "mini", -- view for warnings
+        view_error = "mini", -- view for errors
+    },
+    views = {
+                cmdline_popup = {
+                    position = {
+                        row = 5,
+                        col = "50%",
+                    },
+                    size = {
+                        width = 60,
+                        height = "auto",
+                    },
+                },
+                popupmenu = {
+                    relative = "editor",
+                    position = {
+                        row = 8,
+                        col = "50%",
+                    },
+                    size = {
+                        width = 60,
+                        height = 10,
+                    },
+                    border = {
+                        style = "single",
+                        padding = { 0, 1 },
+                    },
+                    win_options = {
+                        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+                    },
+                },
+            },
+})
 vim.opt.termguicolors = true
 require("which-key").add(
     {
@@ -112,12 +120,14 @@ require("which-key").add(
         {"<leader>at", "<cmd>Tetris<cr>", desc = "Tetris"},
         {"<leader>c", group = "Trouble misc."},
         {"<leader>g", "<cmd>Neogit<cr>", desc = "Neogit"},
+        {"<leader>e", "<cmdterm<cr>iemacs -nw<cr><A-x>eshell<cr>", desc = "Eshell"},
         {
             "<leader>gr",
             "<cmd>G reset --hard HEAD<cr>",
             desc = "Reset to last commit (for if you introduced breaking changes)"
         },
         {"<leader>o", group = "Org mode"},
+        {"<leader>p", "<cmd>BufferPin<cr>", desc = "Pin buffer"},
         {"<leader>r", "<cmd>Telescope oldfiles<cr>", desc = "Recent files"},
         {"<leader>t", "<cmd>term<cr>", desc = "Terminal"},
         {"<leader>x", group = "Trouble"},
@@ -142,23 +152,9 @@ vim.cmd([[
     set nocompatible
     filetype plugin on
     syntax on
-    colorscheme kanagawa " just there as an example, available themes are below
-    nnoremap <silent> <A-p> <Cmd>BufferPin<CR>
+    colorscheme github_dark_default " just there as an example, available themes are below
     autocmd BufWritePost * FormatWrite
     set clipboard=unnamedplus
-    function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
-
-inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 ]])
 require("gitsigns").setup()
 vim.diagnostic.config(
@@ -183,7 +179,19 @@ vim.diagnostic.config(
     }
 )
 vim.opt.termguicolors = true
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+    view = {
+        width = 20,
+    },
+        filters = {
+        dotfiles = false,
+    },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+    },
+})
 require("mini.map").setup()
 require("scrollbar").setup()
 vim.api.nvim_set_keymap("n", "<Tab>", '<Cmd>lua require"stylish".ui_clock()<CR>', {noremap = true, silent = true})
@@ -241,43 +249,38 @@ require("mason-lspconfig").setup_handlers(
         end
     }
 )
-require("cmp").setup(
-    {
-        completion = {
-            completeopt = "menu,menuone,noinsert"
-        },
-        sources = {
-            {name = "luasnip"},
-            {name = "nvim_lsp"},
-            {name = "cmdline"},
-            {name = "html-css"}
-        },
-        mapping = require("cmp").mapping.preset.insert(
-            {
-                ["<CR>"] = require("cmp").mapping.confirm({select = true})
-            }
-        ),
-        formatting = {
-            fields = { "kind", "abbr" },
-            expandable_indicator = true,
-            format = require("lspkind").cmp_format(
-                {
-                    mode = "symbol_text",
-                    menu = ({
-                        buffer = "[Buffer]",
-                        nvim_lsp = "[LSP]",
-                        luasnip = "[LuaSnip]",
-                        nvim_lua = "[Lua]",
-                        latex_symbols = "[Latex]"
-                    })
-                }
-            )
-        },
-        window = {
-            completion = require("cmp").config.window.bordered({border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}})
-        }
-    }
-)
+local cmp = require("cmp")
+local lspkind = require("lspkind")
+
+cmp.setup({
+    sources = {
+        { name = "luasnip" },
+        { name = "nvim_lsp" },
+        { name = "buffer" },
+        { name = "path" },
+        { name = "neorg"}
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    }),
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = "symbol_text",
+            menu = {
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                neorg = "[Neorg]",
+                luasnip = "[LuaSnip]",
+                nvim_lua = "[Lua]",
+                latex_symbols = "[Latex]",
+            },
+        }),
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+})
 require("ibl").setup()
 require 'nvim-treesitter.configs'.setup {
 	highlight = {
@@ -306,5 +309,6 @@ require("catppuccin").setup({
         }
     }
 })
-require("everybody-wants-that-line").setup()
+--require("everybody-wants-that-line").setup()
 require("telescope").load_extension('zoxide')
+require("lualine").setup()

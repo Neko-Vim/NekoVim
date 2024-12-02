@@ -12,8 +12,7 @@ return {
         "LunarVim/lunar.nvim"
     },
     {
-        "r-cha/encourage.nvim",
-        config = true
+        "windwp/nvim-ts-autotag"
     },
     {
         "dhruvasagar/vim-table-mode"
@@ -67,6 +66,10 @@ return {
         priority = 100000
     },
     {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
         "kyoh86/momiji"
     },
     {
@@ -74,12 +77,6 @@ return {
     },
     {
         "mhartington/formatter.nvim"
-    },
-    {
-        "folke/drop.nvim",
-        opts = {
-            theme = "zodiac"
-        }
     },
     {
         "windwp/nvim-autopairs",
@@ -181,9 +178,12 @@ return {
             local dashboard = require("alpha.themes.dashboard")
 
             dashboard.section.header.val = {
-                [[    ┓     •     •┏┓]],
-                [[┏┓┏┓┃┏┏┓┓┏┓┏┳┓    ┫]],
-                [[┛┗┗ ┛┗┗┛┗┛┗┛┗┗  •┗┛]],
+                [[███╗   ██╗███████╗██╗  ██╗ ██████╗ ██╗   ██╗██╗███╗   ███╗       ██████╗]],
+                [[████╗  ██║██╔════╝██║ ██╔╝██╔═══██╗██║   ██║██║████╗ ████║    ██╗╚════██╗]],
+                [[██╔██╗ ██║█████╗  █████╔╝ ██║   ██║██║   ██║██║██╔████╔██║    ╚═╝ █████╔╝]],
+                [[██║╚██╗██║██╔══╝  ██╔═██╗ ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║    ██╗ ╚═══██╗]],
+                [[██║ ╚████║███████╗██║  ██╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║    ╚═╝██████╔╝]],
+                [[╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝       ╚═════╝ ]],
             }
 
             dashboard.section.buttons.val = {
@@ -202,10 +202,10 @@ return {
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
                 return {
-                    [[       |\      _,,,---,,_]],
-                    [[ZZZzz /,`.-'`'    -.  ;-;;,_]],
-                    [[      |,4-  ) )-,_. ,\ (  `'-']],
-                    [[      '---''(_/--'  `-'\_)]],
+                    [[            ／l、       ]],
+                    [[          （ﾟ､ ｡ ７     ]],
+                    [[            l  ~ヽ     ]],
+                    [[            じしf_,)ノ]],
                     "Nekovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
                 }
             end
