@@ -331,7 +331,7 @@ return {
         "sunjon/stylish.nvim"
     },
     {
-        "nvim-tree/nvim-web-devicons"
+        "DaikyXendo/nvim-material-icon"
     },
     {
         "strash/everybody-wants-that-line.nvim"

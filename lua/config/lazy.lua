@@ -142,6 +142,20 @@ require("which-key").add(
 require("monokai-pro").setup()
 require("nvim-web-devicons").setup()
 require("nvim-web-devicons").get_icons()
+require("nvim-web-devicons").set_icon {
+  js = {
+    icon = "",
+    color = "#f7df1e",
+    cterm_color = "65",
+    name = "Javascript"
+  },
+  mjs = {
+    icon = "",
+    color = "#f7df1e",
+    cterm_color = "65",
+    name = "Javascript"
+  }
+}
 vim.cmd([[
     filetype plugin indent on
     set tabstop=4
