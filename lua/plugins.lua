@@ -12,10 +12,19 @@ return {
         "LunarVim/lunar.nvim"
     },
     {
+        "vague2k/vague.nvim",
+        config = function()
+            require("vague").setup()
+        end
+    },
+    {
         "windwp/nvim-ts-autotag"
     },
     {
         "dhruvasagar/vim-table-mode"
+    },
+    {
+        "kvrohit/substrata.nvim"
     },
     {
         "comfysage/evergarden"
