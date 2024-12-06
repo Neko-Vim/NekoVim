@@ -166,7 +166,7 @@ vim.cmd([[
     set nocompatible
     filetype plugin on
     syntax on
-    colorscheme momiji " just there as an example, available themes are below
+    colorscheme github_dark_high_contrast " just there as an example, available themes are below
     autocmd BufWritePost * FormatWrite
     set clipboard=unnamedplus
 ]])
@@ -195,7 +195,7 @@ vim.diagnostic.config(
 vim.opt.termguicolors = true
 require("nvim-tree").setup({
     view = {
-        width = 20,
+        width = 25,
     },
         filters = {
         dotfiles = false,
@@ -255,14 +255,14 @@ require("lspkind").init(
         }
     }
 )
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers(
-    {
-        function(server)
-            require("lspconfig")[server].setup({})
-        end
-    }
-)
+--require("mason-lspconfig").setup()
+--require("mason-lspconfig").setup_handlers(
+--    {
+--        function(server)
+--            require("lspconfig")[server].setup({})
+--        end
+--    }
+--)
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
@@ -323,6 +323,5 @@ require("catppuccin").setup({
         }
     }
 })
---require("everybody-wants-that-line").setup()
 require("telescope").load_extension('zoxide')
 require("lualine").setup()
