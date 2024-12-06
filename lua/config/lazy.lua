@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -17,7 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
+vim.keymap.set({'n', 'v'}, 'x', '"_x')
+vim.keymap.set({'n', 'v'}, 'd', '"_d')
 require("lazy").setup({
     spec = {
         { import = "plugins" },
@@ -323,5 +323,6 @@ require("catppuccin").setup({
         }
     }
 })
+
 require("telescope").load_extension('zoxide')
 require("lualine").setup()
