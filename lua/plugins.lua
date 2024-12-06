@@ -12,6 +12,13 @@ return {
         "LunarVim/lunar.nvim"
     },
     {
+        "RedsXDD/neopywal.nvim",
+        name = "neopywal",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
+    {
         "vague2k/vague.nvim",
         config = function()
             require("vague").setup()
