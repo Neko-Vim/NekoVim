@@ -166,7 +166,7 @@ vim.cmd([[
     set nocompatible
     filetype plugin on
     syntax on
-    colorscheme github_dark_high_contrast " just there as an example, available themes are below
+    colorscheme neopywal " just there as an example, available themes are below
     autocmd BufWritePost * FormatWrite
     set clipboard=unnamedplus
 ]])
