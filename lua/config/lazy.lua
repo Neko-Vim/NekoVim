@@ -136,6 +136,8 @@ require("which-key").add(
         {"<C-s>", "<cmd>w<cr>", desc = "Save"},
         {"<C-x>", "<cmd>BufferClose<cr>", desc = "Close tab"},
         {"<C-c>", "y", desc = "Copy"},
+        {"<A-left>", "<cmd>bp<cr>", desc = "Previous file"},
+        {"<A-right>", "<cmd>bn<cr>", desc = "Next file"},
         {"<leader>s", "<cmd>lua require('telescope.builtin').find_files({cwd = vim.fn.stdpath('config')})<cr>", desc = "Config"}
     }
 )
@@ -164,6 +166,7 @@ vim.cmd([[
     set list
     set nu rnu
     set nocompatible
+    tnoremap <esc> <C-\><C-N>
     filetype plugin on
     syntax on
     colorscheme github_dark_high_contrast " just there as an example, available themes are below
