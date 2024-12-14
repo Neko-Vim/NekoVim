@@ -258,25 +258,23 @@ require("lspkind").init(
         }
     }
 )
---require("mason-lspconfig").setup()
---require("mason-lspconfig").setup_handlers(
---    {
---        function(server)
---            require("lspconfig")[server].setup({})
---        end
---    }
---)
+require("nvim-autopairs").setup()
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers({
+        function(server)
+            require("lspconfig")[server].setup({})
+        end
+})
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
-    sources = {
-        { name = "luasnip" },
+    sources = cmp.config.sources({
         { name = "nvim_lsp" },
+        { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = "neorg"}
-    },
+    }),
     mapping = cmp.mapping.preset.insert({
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
     }),
