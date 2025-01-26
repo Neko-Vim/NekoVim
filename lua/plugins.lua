@@ -378,7 +378,14 @@ return {
         priority = 1000
     },
     {
-        "projekt0n/github-nvim-theme"
+        "projekt0n/github-nvim-theme",
+        config = function ()
+            require("github-theme").setup({
+                options = {
+                    transparent = true
+                }
+            })
+        end
     },
     {
         "loctvl842/monokai-pro.nvim"
