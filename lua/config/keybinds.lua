@@ -27,6 +27,8 @@ require("which-key").add({
 	{ "<C-c>", "y", desc = "Copy" },
 	{ "<A-left>", "<cmd>bp<cr>", desc = "Previous file" },
 	{ "<A-right>", "<cmd>bn<cr>", desc = "Next file" },
+	{ "<up>", "gk", desc = "Up" },
+	{ "<down>", "gj", desc = "Down" },
 	{
 		"<leader>s",
 		"<cmd>lua require('telescope.builtin').find_files({cwd = vim.fn.stdpath('config')})<cr>",
