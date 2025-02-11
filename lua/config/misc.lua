@@ -40,7 +40,7 @@ require("mason").setup({
 
 require("noice").setup({
 	messages = {
-		view = "mini", -- Use the 'mini' view for messages
+		view = "mini",
 		view_warn = "mini",
 		view_error = "mini",
 	},
@@ -48,18 +48,18 @@ require("noice").setup({
 		mini = {
 			relative = "editor",
 			position = {
-				row = -2, -- 2 rows from the bottom
-				col = 0, -- Align to the left
+				row = -2,
+				col = 0,
 			},
 			size = {
-				width = "auto", -- Adjust as needed
+				width = "auto",
 				height = "auto",
 			},
 			border = {
 				style = "rounded",
 			},
 			win_options = {
-				winblend = 0, -- Set transparency
+				winblend = 0,
 			},
 		},
 	},
@@ -103,6 +103,45 @@ require("telescope").setup({
 			end,
 		},
 	},
+})
+
+require("image").setup({
+	backend = "kitty",
+	kitty_method = "normal",
+	processor = "magick_cli",
+	integrations = {
+		markdown = {
+			enabled = true,
+			clear_in_insert_mode = false,
+			download_remote_images = true,
+			only_render_image_at_cursor = false,
+			floating_windows = false,
+			filetypes = { "markdown", "vimwiki" },
+		},
+		neorg = {
+			enabled = true,
+			filetypes = { "norg" },
+		},
+		typst = {
+			enabled = true,
+			filetypes = { "typst" },
+		},
+		html = {
+			enabled = false,
+		},
+		css = {
+			enabled = false,
+		},
+	},
+	max_width = nil,
+	max_height = nil,
+	max_width_window_percentage = nil,
+	max_height_window_percentage = 50,
+	window_overlap_clear_enabled = false,
+	window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
+	editor_only_render_when_focused = false,
+	tmux_show_only_in_active_window = false,
+	hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
 })
 
 require("telescope").load_extension("zoxide")
