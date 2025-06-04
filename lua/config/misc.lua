@@ -6,9 +6,22 @@ vim.cmd([[
     set list
     set nu rnu
     set nocompatible
+    nmap <S-left> <Plug>GoNSMLeft
+    nmap <S-down> <Plug>GoNSMDown
+    nmap <S-up> <Plug>GoNSMUp
+    nmap <S-right> <Plug>GoNSMRight
+    xmap <S-left> <Plug>GoVSMLeft
+    xmap <S-down> <Plug>GoVSMDown
+    xmap <S-up> <Plug>GoVSMUp
+    xmap <S-right> <Plug>GoVSMRight
     tnoremap <esc> <C-\><C-N>
+    nnoremap <A-left> :bp<CR>
+    tnoremap <A-left> <C-\><C-N>:bp<CR>
+    tnoremap <A-right> <C-\><C-N>:bn<CR>
+    xnoremap p P
     filetype plugin on
     syntax on
+    colorscheme carbonfox
     autocmd BufWritePost * FormatWrite
     set clipboard=unnamedplus
 ]])
@@ -33,6 +46,7 @@ vim.diagnostic.config({
 	},
 })
 vim.opt.termguicolors = true
+require("nvim-web-devicons").setup({ default = true })
 
 require("mason").setup({
 	ui = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } },
@@ -42,7 +56,7 @@ require("noice").setup({
 	messages = {
 		view = "mini",
 		view_warn = "mini",
-		view_error = "mini",
+		view_error = "popup",
 	},
 	views = {
 		mini = {
@@ -62,6 +76,19 @@ require("noice").setup({
 				winblend = 0,
 			},
 		},
+	},
+	cmdline = {
+		enabled = true,
+		view = "cmdline_popup",
+		format = {
+			cmdline = { icon = ">" },
+			search_down = { icon = "🔍⌄" },
+			search_up = { icon = "🔍⌃" },
+		},
+	},
+	popupmenu = {
+		enabled = true,
+		backend = "nui",
 	},
 })
 
@@ -85,7 +112,7 @@ require("neocord").setup({
 	logo = "https://i.postimg.cc/RVgnbrXy/NeoVim.png",
 })
 require("luasnip.loaders.from_vscode").lazy_load()
-
+require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/config/snippets" } })
 require("telescope").setup({
 	pickers = {
 		colorscheme = {
@@ -118,10 +145,6 @@ require("image").setup({
 			floating_windows = false,
 			filetypes = { "markdown", "vimwiki" },
 		},
-		neorg = {
-			enabled = true,
-			filetypes = { "norg" },
-		},
 		typst = {
 			enabled = true,
 			filetypes = { "typst" },
@@ -143,8 +166,10 @@ require("image").setup({
 	tmux_show_only_in_active_window = false,
 	hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
 })
-
+require("gomove").setup({
+	map_defaults = true,
+	reindent = true,
+	undojoin = true,
+	move_past_end_col = false,
+})
 require("telescope").load_extension("zoxide")
-vim.defer_fn(function()
-	vim.cmd("colorscheme carbonfox")
-end, 1)

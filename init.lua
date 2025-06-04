@@ -1,6 +1,6 @@
 require("config.lazy")
+require("config.lualine")
 require("config.keybinds")
 require("config.lsp")
 require("config.themes")
 require("config.misc")
-require("config.lualine")

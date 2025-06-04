@@ -1,11 +1,5 @@
 require("nvim-autopairs").setup()
 
-require("mason-lspconfig").setup_handlers({
-	function(server)
-		require("lspconfig")[server].setup({})
-	end,
-})
-
 require("ibl").setup()
 
 require("nvim-treesitter.configs").setup({
@@ -21,20 +15,36 @@ require("nvim-ts-autotag").setup({
 	},
 })
 
+local mason = require("mason")
+local mason_lsp = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
+local cmp_lsp = require("cmp_nvim_lsp")
+
+mason.setup()
+
+mason_lsp.setup({
+	ensure_installed = { "html", "ts_ls", "cssls", "hyprls" },
+	automatic_installation = true,
+	automatic_enable = true,
+})
+
+local capabilities = cmp_lsp.default_capabilities()
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
-	sources = cmp.config.sources({
+	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
-	}),
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<Tab>"] = cmp.mapping.select_next_item(),
+		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
@@ -42,8 +52,8 @@ cmp.setup({
 			maxwidth = 50,
 			ellipsis_char = "...",
 			menu = {
-				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
+				buffer = "[Buffer]",
 				luasnip = "[Snippet]",
 				path = "[Path]",
 			},
@@ -64,7 +74,25 @@ require("formatter").setup({
 		lua = {
 			require("formatter.filetypes.lua").stylua,
 		},
+		javascriptreact = {
+			require("formatter.filetypes.javascriptreact").biome,
+		},
+		json = {
+			require("formatter.filetypes.json").prettier,
+		},
 		javascript = {
+			function()
+				return {
+					exe = "prettier",
+					args = { "--stdin-filepath", util.escape_path(util.get_current_buffer_file_path()) },
+					stdin = true,
+				}
+			end,
+		},
+		typescript = {
+			require("formatter.filetypes.typescript").prettier,
+		},
+		css = {
 			function()
 				return {
 					exe = "prettier",
@@ -93,6 +121,9 @@ require("formatter").setup({
 					stdin = true,
 				}
 			end,
+		},
+		html = {
+			require("formatter.filetypes.html").prettier,
 		},
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,
@@ -131,5 +162,11 @@ lspkind.init({
 		Event = "",
 		Operator = "󰆕",
 		TypeParameter = "",
+	},
+})
+
+vim.filetype.add({
+	pattern = {
+		[".*/hypr/.*%.conf"] = "hypr",
 	},
 })

@@ -1,15 +1,39 @@
 return {
 	{
-		"sho-87/kanagawa-paper.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
-	{
 		"nanotee/zoxide.vim",
 	},
 	{
+		"booperlv/nvim-gomove",
+	},
+	{
+		"S1M0N38/love2d.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{ "<leader>v", ft = "lua", desc = "LÖVE" },
+			{ "<leader>vv", "<cmd>LoveRun<cr>", ft = "lua", desc = "Run LÖVE" },
+			{ "<leader>vs", "<cmd>LoveStop<cr>", ft = "lua", desc = "Stop LÖVE" },
+		},
+	},
+	{
 		"LunarVim/lunar.nvim",
+	},
+	{
+		"gantoreno/nvim-gabriel",
+	},
+	{
+		"theRealCarneiro/hyprland-vim-syntax",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		ft = "hypr",
+	},
+	{
+		"bluz71/vim-moonfly-colors",
+		name = "moonfly",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"nyoom-engineering/oxocarbon.nvim",
 	},
 	{
 		"RedsXDD/neopywal.nvim",
@@ -17,6 +41,20 @@ return {
 		lazy = true,
 		priority = 1000,
 		opts = {},
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 	},
 	{
 		"vague2k/vague.nvim",
@@ -73,13 +111,6 @@ return {
 	},
 	{
 		"voldikss/vim-floaterm",
-	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		config = true,
 	},
 	{
 		"patstockwell/vim-monokai-tasty",
@@ -240,7 +271,7 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 	},
 	{
 		"folke/noice.nvim",
@@ -250,45 +281,11 @@ return {
 		},
 	},
 	{
-		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		opts = {
-			load = {
-				["core.defaults"] = {}, -- Loads default behaviour
-				["core.concealer"] = {}, -- Adds pretty icons to your documents
-				["core.dirman"] = { -- Manages Neorg workspaces
-					config = {
-						workspaces = {
-							notes = "~/notes",
-						},
-						default_workspace = "notes",
-					},
-				},
-			},
-		},
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{
-				"nvim-treesitter/nvim-treesitter",
-				opts = {
-					auto_install = true,
-					highlight = {
-						enable = true,
-						additional_vim_regex_highlighting = true,
-					},
-				},
-				config = function(_, opts)
-					require("nvim-treesitter.configs").setup(opts)
-				end,
-			},
-		},
-	},
-	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -396,9 +393,6 @@ return {
 	},
 	{
 		"loctvl842/monokai-pro.nvim",
-	},
-	{
-		"rebelot/kanagawa.nvim",
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
